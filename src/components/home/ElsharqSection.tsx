@@ -1,7 +1,5 @@
 "use client";
-import Container from "@/components/ui/Container";
 
-import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const programs = [
@@ -15,15 +13,8 @@ const programs = [
 
 export default function ElsharqSection() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ padding: "80px 0", background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)" }}
-    >
-      <div className="absolute inset-0" style={{
-        background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"
-      }} />
-
-      <Container className="relative" style={{ zIndex: 2 }}>
+    <section className="section tv-section" id="sharq">
+      <div className="container-site" style={{ position: "relative", zIndex: 2 }}>
         <SectionHeader
           label="الإعلام"
           title="قناة الشرق"
@@ -31,71 +22,39 @@ export default function ElsharqSection() {
           light
         />
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
-          {/* Info - right side (RTL) */}
-          <div>
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13px] mb-5"
-              style={{
-                background: "rgba(232,116,42,0.15)",
-                border: "1px solid rgba(232,116,42,0.3)",
-                color: "#F09048",
-              }}
-            >
+        <div className="tv-grid">
+          {/* Info */}
+          <div className="tv-info fade-in">
+            <div className="tv-badge">
               <i className="fas fa-satellite-dish" /> بث مباشر على نايلسات
             </div>
-            <h3 className="text-[28px] text-white font-bold mb-4">
-              تلفزيون <span className="text-orange">الشرق</span>
+            <h3>
+              تلفزيون <span style={{ color: "#E8742A" }}>الشرق</span>
             </h3>
-            <p className="text-[15px] leading-[1.9] mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
+            <p>
               قناة فضائية مصرية معارضة انطلقت في 25 أبريل 2014. انتقلت ملكيتها إلى الدكتور أيمن نور في أغسطس 2015. تبث من إسطنبول وتقدم تغطية شاملة للأوضاع المصرية والعربية.
             </p>
-            <Link
-              href="/media/elsharq"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline text-white transition-all hover:-translate-y-0.5"
-              style={{
-                background: "linear-gradient(135deg, #E8742A, #D05E18)",
-                boxShadow: "0 4px 20px rgba(232,116,42,0.4)",
-              }}
-            >
+            <a href="#" className="btn btn-primary" style={{ marginTop: 8 }}>
               <i className="fas fa-play" /> شاهد البث المباشر
-            </Link>
+            </a>
           </div>
 
-          {/* Programs - left side (RTL) */}
-          <div className="flex flex-col gap-3">
+          {/* Programs */}
+          <div className="programs-list fade-in">
             {programs.map((p) => (
-              <div
-                key={p.name}
-                className="flex items-center gap-3.5 px-[18px] py-3.5 rounded-lg transition-all duration-300 cursor-pointer"
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(232,116,42,0.1)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(232,116,42,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-[10px] flex items-center justify-center text-white text-base flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
-                >
+              <div key={p.name} className="program-item">
+                <div className="program-icon">
                   <i className={`fas ${p.icon}`} />
                 </div>
                 <div>
-                  <div className="text-white text-[15px] font-semibold">{p.name}</div>
-                  <div className="text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>تقديم: {p.host}</div>
+                  <div className="program-name">{p.name}</div>
+                  <div className="program-host">تقديم: {p.host}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
