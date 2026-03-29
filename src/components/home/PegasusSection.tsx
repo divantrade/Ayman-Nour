@@ -3,7 +3,7 @@
 export default function PegasusSection() {
   return (
     <section className="py-20" style={{ background: "#0F1E3D" }}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="container-main">
         <div
           className="rounded-[20px] p-12 relative overflow-hidden max-md:p-8"
           style={{

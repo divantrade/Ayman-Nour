@@ -29,6 +29,17 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Container utility */
+.container-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section { padding: 80px 0; }
+.section-dark { background: #0F1E3D; color: white; }
+.section-gray { background: #F0F1F3; }
+
 body {
   font-family: 'Cairo', 'Tajawal', sans-serif;
   background: var(--color-off-white);

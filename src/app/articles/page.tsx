@@ -31,7 +31,7 @@ export default function ArticlesPage() {
       />
 
       <section className="py-20 bg-gray-100">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           {/* Filters */}
           <div className="bg-white rounded-xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 mb-8">
             <div className="flex flex-col md:flex-row gap-4">

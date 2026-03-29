@@ -49,7 +49,7 @@ export default function GalleryPage() {
       <PageHero label="معرض الصور" title="لحظات من المسيرة" subtitle="لحظات من مسيرة نضال وعطاء امتدت لأكثر من أربعين عاماً" />
 
       <section className="py-20 bg-off-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           {/* Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((cat) => (

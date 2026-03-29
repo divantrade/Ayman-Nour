@@ -35,7 +35,7 @@ export default function BiographyPage() {
 
       {/* Personal Info */}
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <SectionHeader label="البيانات" title="المعلومات الأساسية" />
           <FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
@@ -57,7 +57,7 @@ export default function BiographyPage() {
 
       {/* Family */}
       <section className="py-20 bg-gray-100">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <SectionHeader label="العائلة" title="الحياة الشخصية" />
           <FadeIn>
             <div className="max-w-3xl mx-auto bg-white rounded-xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">
@@ -75,7 +75,7 @@ export default function BiographyPage() {
 
       {/* Education */}
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <SectionHeader label="التعليم" title="المؤهلات الأكاديمية" />
           <FadeIn>
             <div className="max-w-3xl mx-auto space-y-4">
@@ -99,7 +99,7 @@ export default function BiographyPage() {
 
       {/* Timeline */}
       <section className="py-20 bg-gray-100">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <SectionHeader
             label="المسيرة السياسية"
             title="أكثر من أربعة عقود"

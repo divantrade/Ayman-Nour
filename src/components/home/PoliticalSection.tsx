@@ -13,7 +13,7 @@ const cards = [
 export default function PoliticalSection() {
   return (
     <section className="py-20 bg-off-white">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="container-main">
         <SectionHeader
           label="النضال السياسي"
           title="المشروع الوطني"

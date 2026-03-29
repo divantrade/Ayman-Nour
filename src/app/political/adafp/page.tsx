@@ -12,7 +12,7 @@ export default function ADAFPPage() {
     <>
       <PageHero label="التحالفات" title="التحالف الديمقراطي الأفريقي" subtitle="رؤية لدعم الديمقراطية والليبرالية في القارة الأفريقية" />
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">

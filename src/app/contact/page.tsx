@@ -23,7 +23,7 @@ export default function ContactPage() {
   return (
     <section className="bg-navy text-white min-h-screen">
       <div className="py-20">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <SectionHeader
             label="تواصل"
             title="تواصل معنا"

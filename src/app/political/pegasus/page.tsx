@@ -21,7 +21,7 @@ export default function PegasusPage() {
           <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-red-500 blur-3xl" />
           <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-red-500 blur-3xl" />
         </div>
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <div className="container-main relative z-10">
           <FadeIn>
             <div className="flex items-center gap-3 mb-4">
               <i className="fas fa-shield-halved text-red-400 text-3xl" />
@@ -36,7 +36,7 @@ export default function PegasusPage() {
 
       {/* Content */}
       <section className="bg-[#161B22] text-white py-20">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="rounded-[20px] p-8 md:p-12 mb-12 border border-[rgba(232,80,80,0.2)]" style={{ background: "linear-gradient(135deg, #1a0a0a, #2d1515)" }}>

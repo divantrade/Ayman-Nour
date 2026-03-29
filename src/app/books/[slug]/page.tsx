@@ -27,7 +27,7 @@ export default async function BookPage({ params }: Props) {
     <>
       <PageHero label="المكتبة" title={book.title} />
       <section className="py-20 bg-off-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <FadeIn>
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">

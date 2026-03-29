@@ -13,7 +13,7 @@ export default function GhadPage() {
     <>
       <PageHero label="الأحزاب" title="حزب غد الثورة" subtitle="الحزب الليبرالي الإصلاحي — من حزب الغد إلى غد الثورة" />
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="bg-off-white rounded-[20px] p-8 md:p-12 mb-12">

@@ -17,7 +17,7 @@ export default function ElsharqPage() {
       <PageHero label="الإعلام" title="قناة الشرق" subtitle="الحقيقة والأمل — قناة فضائية مصرية معارضة تبث من إسطنبول" />
 
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
@@ -62,7 +62,7 @@ export default function ElsharqPage() {
       {/* Programs - dark section */}
       <section className="py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)" }}>
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)" }} />
-        <div className="max-w-[1200px] mx-auto px-6 relative z-[2]">
+        <div className="container-main relative z-[2]">
           <SectionHeader label="البرامج" title="باقة البرامج" subtitle="تشكيلة متنوعة من البرامج السياسية والاجتماعية" light />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
             {programs.map((program, i) => (

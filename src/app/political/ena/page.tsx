@@ -22,7 +22,7 @@ export default function ENAPage() {
     <>
       <PageHero label="التحالفات" title="اتحاد القوى الوطنية المصرية" subtitle="أكبر تحالف للمعارضة المصرية — من أجل مصر حرة وديمقراطية" />
       <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="bg-off-white rounded-[20px] p-8 md:p-12 mb-12">

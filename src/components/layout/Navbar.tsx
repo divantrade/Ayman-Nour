@@ -39,7 +39,7 @@ export default function Navbar() {
           boxShadow: scrolled ? "var(--shadow-lg)" : "none",
         }}
       >
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between px-6 h-[70px]">
+        <div className="container-main flex items-center justify-between" style={{ height: "70px" }}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 no-underline text-white">
             <div

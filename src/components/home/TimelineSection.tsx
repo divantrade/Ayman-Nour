@@ -28,7 +28,7 @@ export default function TimelineSection() {
 
   return (
     <section className="py-20" style={{ background: "#F0F1F3" }}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="container-main">
         <SectionHeader
           label="المسيرة السياسية"
           title="أكثر من أربعة عقود"

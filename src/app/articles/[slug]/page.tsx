@@ -28,7 +28,7 @@ export default async function ArticlePage({ params }: Props) {
     <>
       <PageHero label="المقالات" title={article.title} />
       <section className="py-20 bg-off-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <FadeIn>
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-[20px] p-8 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">

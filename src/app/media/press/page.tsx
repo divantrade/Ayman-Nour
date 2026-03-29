@@ -20,7 +20,7 @@ export default function PressPage() {
     <>
       <PageHero label="الإعلام" title="في الصحافة" subtitle="أرشيف ما كُتب عن الدكتور أيمن نور في وسائل الإعلام" />
       <section className="py-20 bg-off-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="max-w-4xl mx-auto space-y-5">
             {pressItems.map((item, index) => (
               <FadeIn key={index} delay={index * 0.1}>

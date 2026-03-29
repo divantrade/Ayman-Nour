@@ -22,7 +22,7 @@ export default function ElsharqSection() {
         background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"
       }} />
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-[2]">
+      <div className="container-main relative z-[2]">
         <SectionHeader
           label="الإعلام"
           title="قناة الشرق"

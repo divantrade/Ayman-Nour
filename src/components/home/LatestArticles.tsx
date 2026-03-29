@@ -10,7 +10,7 @@ export default function LatestArticles() {
 
   return (
     <section className="py-20" style={{ background: "#F0F1F3" }}>
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="container-main">
         <SectionHeader
           label="المقالات"
           title="أحدث الكتابات"

@@ -12,7 +12,7 @@ export default function Hero() {
       }} />
       <div className="hero-pattern" />
 
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center relative z-[2]">
+      <div className="container-main grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center relative z-[2]">
         {/* Content */}
         <div className="animate-fadeInRight">
           <div

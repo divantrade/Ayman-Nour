@@ -19,7 +19,7 @@ export default function MediaPage() {
     <>
       <PageHero label="الإعلام" title="النشاط الإعلامي" subtitle="قناة الشرق الفضائية والمقابلات والتغطية الإعلامية" />
       <section className="py-20 bg-off-white">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {mediaSections.map((section, index) => (
               <FadeIn key={section.href} delay={index * 0.1}>
