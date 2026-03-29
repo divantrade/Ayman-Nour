@@ -9,17 +9,21 @@ const newsItems = [
 
 export default function NewsTicker() {
   return (
-    <div className="relative overflow-hidden py-[10px]" style={{ background: "#E8742A" }}>
-      <div
-        className="absolute right-0 top-0 bottom-0 px-5 flex items-center gap-2 font-bold text-white text-[13px] z-[2]"
-        style={{ background: "#D05E18" }}
-      >
+    <div style={{ background: "#E8742A", padding: "10px 0", overflow: "hidden", position: "relative" }}>
+      <div style={{
+        position: "absolute", right: 0, top: 0, bottom: 0,
+        background: "#D05E18",
+        padding: "0 20px",
+        display: "flex", alignItems: "center",
+        fontWeight: 700, color: "#fff", fontSize: 13,
+        zIndex: 2,
+      }}>
         <i className="fas fa-bolt" />&nbsp; عاجل
       </div>
-      <div className="animate-ticker flex whitespace-nowrap text-white text-sm font-medium">
+      <div className="animate-ticker" style={{ display: "flex", whiteSpace: "nowrap", color: "#fff", fontSize: 14, fontWeight: 500 }}>
         {[...newsItems, ...newsItems].map((item, i) => (
-          <span key={i} className="px-10">
-            <span className="ml-3 opacity-50">◆</span>
+          <span key={i} style={{ padding: "0 40px" }}>
+            <span style={{ marginLeft: 12, opacity: 0.5 }}>◆</span>
             {item}
           </span>
         ))}

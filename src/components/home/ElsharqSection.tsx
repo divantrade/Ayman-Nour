@@ -15,8 +15,8 @@ const programs = [
 export default function ElsharqSection() {
   return (
     <section
-      className="py-20 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)" }}
+      className="relative overflow-hidden"
+      style={{ padding: "80px 0", background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)" }}
     >
       <div className="absolute inset-0" style={{
         background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"

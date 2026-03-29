@@ -12,7 +12,7 @@ const contactItems = [
 
 export default function ContactSection() {
   return (
-    <section className="py-20" style={{ background: "#0F1E3D" }}>
+    <section style={{ padding: "80px 0", background: "#0F1E3D" }}>
       <div className="container-main">
         <SectionHeader label="تواصل" title="تواصل معنا" subtitle="للتواصل مع مكتب الدكتور أيمن نور" light />
 

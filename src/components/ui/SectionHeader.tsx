@@ -1,7 +1,5 @@
 "use client";
 
-import FadeIn from "./FadeIn";
-
 interface SectionHeaderProps {
   label?: string;
   title: string;
@@ -11,33 +9,40 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ label, title, subtitle, light }: SectionHeaderProps) {
   return (
-    <FadeIn className="text-center mb-14">
+    <div style={{ textAlign: "center", marginBottom: 56 }}>
       {label && (
-        <div className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[2px] mb-3 ${
-          light ? "text-orange-light" : "text-orange"
-        }`}>
-          <span className="w-6 h-[2px] bg-orange inline-block" />
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          color: light ? "#F09048" : "#E8742A",
+          fontSize: 14, fontWeight: 700,
+          textTransform: "uppercase",
+          letterSpacing: 2,
+          marginBottom: 12,
+        }}>
+          <span style={{ width: 24, height: 2, background: "#E8742A", display: "inline-block" }} />
           {label}
-          <span className="w-6 h-[2px] bg-orange inline-block" />
+          <span style={{ width: 24, height: 2, background: "#E8742A", display: "inline-block" }} />
         </div>
       )}
-      <h2
-        className={`text-4xl font-extrabold mb-4 leading-tight ${
-          light ? "text-white" : "text-text-primary"
-        }`}
-      >
-        {title}
-        <span className="text-orange">.</span>
+      <h2 style={{
+        fontSize: 36,
+        fontWeight: 800,
+        marginBottom: 16,
+        lineHeight: 1.3,
+        color: light ? "#fff" : "#1A1D24",
+      }}>
+        {title}<span style={{ color: "#E8742A" }}>.</span>
       </h2>
       {subtitle && (
-        <p
-          className={`text-base max-w-[600px] mx-auto ${
-            light ? "text-white/60" : "text-text-secondary"
-          }`}
-        >
+        <p style={{
+          fontSize: 16,
+          color: light ? "rgba(255,255,255,0.6)" : "#4A4F5C",
+          maxWidth: 600,
+          margin: "0 auto",
+        }}>
           {subtitle}
         </p>
       )}
-    </FadeIn>
+    </div>
   );
 }

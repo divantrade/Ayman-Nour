@@ -31,43 +31,57 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 right-0 left-0 z-[1000] transition-all duration-300"
         style={{
+          position: "fixed", top: 0, right: 0, left: 0, zIndex: 1000,
           background: scrolled ? "rgba(15, 30, 61, 0.98)" : "rgba(15, 30, 61, 0.95)",
           backdropFilter: "blur(20px)",
           borderBottom: "2px solid #E8742A",
-          boxShadow: scrolled ? "var(--shadow-lg)" : "none",
+          boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.12)" : "none",
+          transition: "all 0.3s ease",
         }}
       >
-        <div className="container-main flex items-center justify-between" style={{ height: "70px" }}>
+        <div
+          className="container-main"
+          style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 70 }}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 no-underline text-white">
-            <div
-              className="w-[42px] h-[42px] rounded-full flex items-center justify-center text-white font-black text-lg"
-              style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
-            >
-              ن
-            </div>
-            <div className="text-lg font-bold">
-              د. أيمن <span className="text-orange">نور</span>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff" }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: "50%",
+              background: "linear-gradient(135deg, #E8742A, #D05E18)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontWeight: 900, fontSize: 18, color: "#fff",
+            }}>ن</div>
+            <div style={{ fontSize: 18, fontWeight: 700 }}>
+              د. أيمن <span style={{ color: "#E8742A" }}>نور</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden lg:flex gap-1 list-none items-center">
+          <ul style={{ display: "flex", gap: 4, listStyle: "none", alignItems: "center" }} className="hidden lg:!flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="relative no-underline transition-all duration-300 text-sm font-medium px-4 py-2 rounded-lg"
                   style={{
                     color: isActive(link.href) ? "#fff" : "rgba(255,255,255,0.8)",
+                    textDecoration: "none",
+                    padding: "8px 16px",
+                    borderRadius: 8,
+                    fontSize: 14,
+                    fontWeight: 500,
+                    transition: "all 0.3s ease",
+                    position: "relative",
+                    display: "inline-block",
                     background: isActive(link.href) ? "rgba(232, 116, 42, 0.15)" : "transparent",
                   }}
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute bottom-[2px] right-4 left-4 h-[2px] bg-orange rounded-sm" />
+                    <span style={{
+                      position: "absolute", bottom: 2, right: 16, left: 16,
+                      height: 2, background: "#E8742A", borderRadius: 2,
+                    }} />
                   )}
                 </Link>
               </li>
@@ -75,8 +89,16 @@ export default function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="no-underline text-white text-sm font-semibold px-5 py-2 rounded-full mr-2"
-                style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
+                style={{
+                  background: "linear-gradient(135deg, #E8742A, #D05E18)",
+                  color: "#fff",
+                  padding: "8px 20px",
+                  borderRadius: 50,
+                  fontWeight: 600,
+                  fontSize: 14,
+                  textDecoration: "none",
+                  marginRight: 8,
+                }}
               >
                 تواصل معنا
               </Link>
@@ -86,7 +108,8 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden bg-transparent border-none text-white text-2xl cursor-pointer"
+            className="lg:hidden"
+            style={{ background: "none", border: "none", color: "#fff", fontSize: 24, cursor: "pointer" }}
           >
             <i className={`fas ${mobileOpen ? "fa-times" : "fa-bars"}`} />
           </button>
@@ -95,19 +118,21 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {mobileOpen && (
           <ul
-            className="lg:hidden flex flex-col list-none px-5 py-5 gap-1"
+            className="lg:hidden"
             style={{
-              background: "#0F1E3D",
+              display: "flex", flexDirection: "column", listStyle: "none",
+              padding: 20, background: "#0F1E3D",
               borderTop: "2px solid #E8742A",
-              boxShadow: "var(--shadow-lg)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
             }}
           >
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-3 px-4 rounded-lg no-underline text-base font-medium"
                   style={{
+                    display: "block", padding: "12px 16px", borderRadius: 8,
+                    textDecoration: "none", fontSize: 16, fontWeight: 500,
                     color: isActive(link.href) ? "#fff" : "rgba(255,255,255,0.8)",
                     background: isActive(link.href) ? "rgba(232, 116, 42, 0.15)" : "transparent",
                   }}
@@ -119,8 +144,12 @@ export default function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="block text-center text-white font-semibold py-3 rounded-full no-underline mt-3"
-                style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
+                style={{
+                  display: "block", textAlign: "center",
+                  background: "linear-gradient(135deg, #E8742A, #D05E18)",
+                  color: "#fff", padding: "12px 20px", borderRadius: 50,
+                  fontWeight: 600, textDecoration: "none", marginTop: 12,
+                }}
               >
                 تواصل معنا
               </Link>
@@ -129,8 +158,8 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* Spacer for fixed navbar */}
-      <div className="h-[70px]" />
+      {/* Spacer */}
+      <div style={{ height: 70 }} />
     </>
   );
 }

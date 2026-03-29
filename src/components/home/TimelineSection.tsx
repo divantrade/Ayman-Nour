@@ -27,7 +27,7 @@ export default function TimelineSection() {
   }, []);
 
   return (
-    <section className="py-20" style={{ background: "#F0F1F3" }}>
+    <section style={{ padding: "80px 0", background: "#F0F1F3" }}>
       <div className="container-main">
         <SectionHeader
           label="المسيرة السياسية"
