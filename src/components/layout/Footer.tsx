@@ -1,116 +1,95 @@
 "use client";
-import Container from "@/components/ui/Container";
-
-import Link from "next/link";
 
 export default function Footer() {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <footer style={{ background: "#080E1C", borderTop: "3px solid #E8742A" }} className="pt-12 pb-6">
-      <Container>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
+    <footer className="footer">
+      <div className="container-site">
+        <div className="footer-grid">
           {/* Brand */}
-          <div>
-            <Link href="/" className="flex items-center gap-3 no-underline text-white mb-2">
+          <div className="footer-brand">
+            <a
+              href="#home"
+              onClick={(e) => handleClick(e, "#home")}
+              className="nav-logo"
+              style={{ marginBottom: 8, display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff" }}
+            >
               <div
-                className="w-[42px] h-[42px] rounded-full flex items-center justify-center text-white font-black text-lg"
-                style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
+                style={{
+                  width: 42,
+                  height: 42,
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #E8742A, #D05E18)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: 900,
+                  fontSize: 18,
+                  color: "#fff",
+                }}
               >
                 ن
               </div>
-              <div className="text-lg font-bold">
+              <div style={{ fontSize: 18, fontWeight: 700 }}>
                 د. أيمن <span style={{ color: "#E8742A" }}>نور</span>
               </div>
-            </Link>
-            <p className="text-sm leading-[1.8] mt-3" style={{ color: "rgba(255,255,255,0.5)" }}>
+            </a>
+            <p>
               سياسي مصري ومفكر ليبرالي. أول مرشح رئاسي ينافس مبارك. مؤسس حزب الغد. رئيس اتحاد القوى الوطنية المصرية. مناضل من أجل حرية مصر وديمقراطيتها.
             </p>
-            <div className="flex gap-2.5 mt-4">
-              {[
-                { icon: "fa-telegram", href: "#" },
-                { icon: "fa-youtube", href: "#" },
-                { icon: "fa-facebook-f", href: "https://facebook.com/dr.Aymannour" },
-                { icon: "fa-x-twitter", href: "https://twitter.com/AymanNour" },
-              ].map((s) => (
-                <a
-                  key={s.icon}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-[38px] h-[38px] rounded-[10px] flex items-center justify-center no-underline transition-all duration-300"
-                  style={{ background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.6)" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "#E8742A";
-                    (e.currentTarget as HTMLElement).style.color = "#fff";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
-                    (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)";
-                  }}
-                >
-                  <i className={`fab ${s.icon}`} />
-                </a>
-              ))}
+            <div className="footer-social">
+              <a href="#"><i className="fab fa-x-twitter" /></a>
+              <a href="#"><i className="fab fa-facebook-f" /></a>
+              <a href="#"><i className="fab fa-youtube" /></a>
+              <a href="#"><i className="fab fa-telegram" /></a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <div className="text-[15px] font-bold mb-4" style={{ color: "#E8742A" }}>روابط سريعة</div>
-            <ul className="list-none flex flex-col gap-2">
-              {[
-                { href: "/", label: "الرئيسية" },
-                { href: "/biography", label: "المسيرة" },
-                { href: "/books", label: "المؤلفات" },
-                { href: "/articles", label: "المقالات" },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="no-underline text-sm transition-colors hover:text-orange" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+            <div className="footer-title">روابط سريعة</div>
+            <ul className="footer-links">
+              <li><a href="#home" onClick={(e) => handleClick(e, "#home")}>الرئيسية</a></li>
+              <li><a href="#timeline" onClick={(e) => handleClick(e, "#timeline")}>المسيرة</a></li>
+              <li><a href="#books" onClick={(e) => handleClick(e, "#books")}>المؤلفات</a></li>
+              <li><a href="#articles" onClick={(e) => handleClick(e, "#articles")}>المقالات</a></li>
             </ul>
           </div>
 
           {/* Projects */}
           <div>
-            <div className="text-[15px] font-bold mb-4" style={{ color: "#E8742A" }}>المشاريع</div>
-            <ul className="list-none flex flex-col gap-2">
-              {[
-                { href: "/political/ghad", label: "حزب غد الثورة" },
-                { href: "/political/ena", label: "اتحاد القوى الوطنية" },
-                { href: "/media/elsharq", label: "قناة الشرق" },
-                { href: "/political/adafp", label: "التحالف الأفريقي" },
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="no-underline text-sm transition-colors hover:text-orange" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+            <div className="footer-title">المشاريع</div>
+            <ul className="footer-links">
+              <li><a href="#">حزب غد الثورة</a></li>
+              <li><a href="#">اتحاد القوى الوطنية</a></li>
+              <li><a href="#">قناة الشرق</a></li>
+              <li><a href="#">التحالف الأفريقي</a></li>
             </ul>
           </div>
 
           {/* External */}
           <div>
-            <div className="text-[15px] font-bold mb-4" style={{ color: "#E8742A" }}>مواقع مهمة</div>
-            <ul className="list-none flex flex-col gap-2">
-              {["ghadnews.net", "egyna.org", "elsharq.tv", "arabcouncil.foundation"].map((s) => (
-                <li key={s}>
-                  <a href={`https://${s}`} target="_blank" rel="noopener noreferrer" className="no-underline text-sm transition-colors hover:text-orange" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    {s}
-                  </a>
-                </li>
-              ))}
+            <div className="footer-title">مواقع مهمة</div>
+            <ul className="footer-links">
+              <li><a href="#">ghadnews.net</a></li>
+              <li><a href="#">egyna.org</a></li>
+              <li><a href="#">elsharq.tv</a></li>
+              <li><a href="#">arabcouncil.foundation</a></li>
             </ul>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-5 text-center text-[13px]" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)" }}>
+        <div className="footer-bottom">
           جميع الحقوق محفوظة &copy; 2026 - الموقع الرسمي للدكتور أيمن عبد العزيز نور
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

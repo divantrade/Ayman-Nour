@@ -6,7 +6,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: {
-    default: "د. أيمن نور — سياسي، مفكر، مناضل من أجل الحرية",
+    default: "د. أيمن نور - سياسي، مفكر، مناضل من أجل الحرية",
     template: "%s | د. أيمن نور",
   },
   description:
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_EG",
     siteName: "د. أيمن نور",
-    title: "د. أيمن نور — سياسي، مفكر، مناضل من أجل الحرية",
+    title: "د. أيمن نور - سياسي، مفكر، مناضل من أجل الحرية",
     description:
       "الموقع الرسمي للدكتور أيمن عبد العزيز نور — سياسي مصري معارض، مفكر ليبرالي، ومؤسس حزب الغد.",
   },
@@ -40,41 +40,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className="antialiased">
+    <html lang="ar" dir="rtl">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "أيمن عبد العزيز نور",
-              alternateName: "Ayman Nour",
-              jobTitle: "سياسي ومفكر ليبرالي",
-              nationality: "مصري",
-              birthDate: "1964",
-              birthPlace: "المنصورة، مصر",
-              sameAs: [
-                "https://twitter.com/AymanNour",
-                "https://facebook.com/dr.Aymannour",
-              ],
-            }),
-          }}
+          rel="stylesheet"
         />
       </head>
-      <body style={{ minHeight: "100vh", display: "flex", flexDirection: "column", overflowX: "hidden", maxWidth: "100vw" }}>
+      <body>
         <Navbar />
-        <main style={{ flex: 1, overflowX: "hidden" }}>{children}</main>
+        <main>{children}</main>
         <Footer />
         <ScrollToTop />
       </body>

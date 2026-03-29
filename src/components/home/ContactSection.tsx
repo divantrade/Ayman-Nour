@@ -1,5 +1,4 @@
 "use client";
-import Container from "@/components/ui/Container";
 
 import SectionHeader from "@/components/ui/SectionHeader";
 
@@ -13,81 +12,46 @@ const contactItems = [
 
 export default function ContactSection() {
   return (
-    <section style={{ padding: "80px 0", background: "#0F1E3D" }}>
-      <Container>
+    <section className="section section-dark" id="contact">
+      <div className="container-site">
         <SectionHeader label="تواصل" title="تواصل معنا" subtitle="للتواصل مع مكتب الدكتور أيمن نور" light />
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+        <div className="contact-grid">
           {/* Contact Info */}
-          <div className="flex flex-col gap-5">
+          <div className="contact-info fade-in">
             {contactItems.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-4 p-4 rounded-lg transition-all duration-300 cursor-pointer"
-                style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(232,116,42,0.1)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(232,116,42,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
-                }}
-              >
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-white text-lg flex-shrink-0"
-                  style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
-                >
+              <div key={item.label} className="contact-item">
+                <div className="contact-icon">
                   <i className={item.icon} />
                 </div>
                 <div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{item.label}</div>
-                  <div className="text-[15px] text-white font-semibold" dir="ltr">{item.value}</div>
+                  <div className="contact-label">{item.label}</div>
+                  <div className="contact-value">{item.value}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Form */}
-          <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-            {["الاسم الكامل", "البريد الإلكتروني", "الموضوع"].map((ph) => (
-              <input
-                key={ph}
-                type="text"
-                placeholder={ph}
-                className="w-full px-[18px] py-3.5 rounded-lg text-white text-sm outline-none transition-colors font-[inherit]"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "#E8742A")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")}
-                dir={ph === "البريد الإلكتروني" ? "ltr" : undefined}
-              />
-            ))}
-            <textarea
-              placeholder="الرسالة..."
-              rows={5}
-              className="w-full px-[18px] py-3.5 rounded-lg text-white text-sm outline-none transition-colors resize-y font-[inherit]"
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.15)",
-              }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "#E8742A")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)")}
-            />
-            <button
-              type="submit"
-              className="w-full text-white border-none px-8 py-3.5 rounded-full text-[15px] font-semibold cursor-pointer transition-all duration-300 hover:-translate-y-0.5"
-              style={{
-                background: "linear-gradient(135deg, #E8742A, #D05E18)",
-              }}
-            >
+          <form className="contact-form fade-in" onSubmit={(e) => e.preventDefault()}>
+            <div className="form-group">
+              <input type="text" placeholder="الاسم الكامل" />
+            </div>
+            <div className="form-group">
+              <input type="email" placeholder="البريد الإلكتروني" style={{ direction: "ltr", textAlign: "right" }} />
+            </div>
+            <div className="form-group">
+              <input type="text" placeholder="الموضوع" />
+            </div>
+            <div className="form-group">
+              <textarea placeholder="الرسالة..." />
+            </div>
+            <button type="submit" className="btn-submit">
               <i className="fas fa-paper-plane" />&nbsp; إرسال الرسالة
             </button>
           </form>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
