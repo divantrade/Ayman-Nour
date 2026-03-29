@@ -3,69 +3,61 @@
 @theme inline {
   --color-navy: #0F1E3D;
   --color-navy-light: #1A2D54;
+  --color-navy-mid: #15254A;
+  --color-navy-dark: #080E1C;
   --color-orange: #E8742A;
   --color-orange-light: #F09048;
   --color-orange-dark: #D05E18;
   --color-off-white: #F7F8FA;
   --color-gray-100: #F0F1F3;
+  --color-gray-200: #E2E4E8;
+  --color-gray-300: #C8CCD4;
   --color-gray-600: #6B7280;
+  --color-gray-800: #2D3038;
   --color-text-primary: #1A1D24;
   --color-text-secondary: #4A4F5C;
-  --font-cairo: 'Cairo', sans-serif;
 }
 
 :root {
   --orange-glow: rgba(232, 116, 42, 0.15);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Cairo', Arial, Tahoma, sans-serif;
+  font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
   background: #F7F8FA;
   color: #1A1D24;
+  line-height: 1.8;
   direction: rtl;
+  overflow-x: hidden;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #F0F1F3;
-}
-::-webkit-scrollbar-thumb {
-  background: #E8742A;
-  border-radius: 4px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F0F1F3; }
+::-webkit-scrollbar-thumb { background: #E8742A; border-radius: 4px; }
 
 /* News ticker animation */
 @keyframes ticker {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
-
 .animate-ticker {
   animation: ticker 30s linear infinite;
 }
 
-/* Timeline line */
+/* Timeline center line */
 .timeline-line {
   position: absolute;
   right: 50%;
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(to bottom, #E8742A, #D05E18);
+  background: linear-gradient(to bottom, #E8742A, #1A2D54, #E8742A);
   transform: translateX(50%);
+  border-radius: 3px;
 }
 
 @media (max-width: 768px) {
@@ -73,4 +65,13 @@ body {
     right: 20px;
     transform: none;
   }
+}
+
+/* Hero pattern overlay */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill-rule='evenodd'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
 }

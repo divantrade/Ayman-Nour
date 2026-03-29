@@ -1,87 +1,99 @@
 "use client";
 
-import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import FadeIn from "@/components/ui/FadeIn";
-import { BookOpen, Users, Award } from "lucide-react";
-
-const stats = [
-  { icon: Award, value: "+40", label: "عاماً من النضال" },
-  { icon: BookOpen, value: "11", label: "كتاباً ومؤلفاً" },
-  { icon: Users, value: "3", label: "دورات برلمانية" },
-];
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="bg-off-white py-12 md:py-20 overflow-hidden">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content - Right side in RTL */}
-          <FadeIn direction="right">
-            <div>
-              <p className="text-orange font-semibold text-lg mb-2">
-                الموقع الرسمي
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-4 leading-tight">
-                د. أيمن
-                <span className="text-orange"> نور</span>
-              </h1>
-              <p className="text-xl text-text-secondary mb-2">
-                سياسي مصري معارض ومفكر ليبرالي
-              </p>
-              <p className="text-text-secondary leading-relaxed mb-8 max-w-lg">
-                رئيس حزب غد الثورة ورئيس اتحاد القوى الوطنية المصرية. أول مرشح
-                ينافس في انتخابات رئاسية مباشرة في تاريخ مصر. يناضل من أجل حرية
-                مصر وديمقراطيتها منذ أكثر من أربعين عاماً.
-              </p>
+    <section className="min-h-screen bg-gradient-to-br from-navy via-navy-mid to-navy-light flex items-center relative overflow-hidden pt-[70px]">
+      {/* Background effects */}
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse at 20% 80%, rgba(232,116,42,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,116,42,0.05) 0%, transparent 50%)"
+      }} />
+      <div className="hero-pattern" />
 
-              <div className="flex flex-wrap gap-4 mb-10">
-                <Button href="/biography">اكتشف المسيرة</Button>
-                <Button href="/contact" variant="outline">
-                  تواصل معنا
-                </Button>
-              </div>
+      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center relative z-[2]">
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-[rgba(232,116,42,0.15)] border border-[rgba(232,116,42,0.3)] px-4 py-1.5 rounded-full text-orange-light text-[13px] font-semibold mb-6">
+            <i className="fas fa-circle text-[10px]" />
+            مناضل من أجل الحرية والديمقراطية
+          </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <stat.icon
-                      className="mx-auto text-orange mb-2"
-                      size={24}
-                    />
-                    <div className="text-2xl md:text-3xl font-bold text-text-primary">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-text-secondary">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
+          <h1 className="text-[42px] md:text-[52px] font-black text-white leading-[1.2] mb-2">
+            د. أيمن عبد العزيز <span className="text-orange">نور</span>
+          </h1>
 
-          {/* Image - Left side in RTL */}
-          <FadeIn direction="left" delay={0.2}>
-            <div className="relative">
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -right-4 w-full h-full border-2 border-orange rounded-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-orange/30 rounded-2xl" />
-              {/* Image placeholder */}
-              <div className="relative bg-gradient-to-br from-navy to-navy-light rounded-2xl aspect-[3/4] flex items-center justify-center overflow-hidden">
-                <div className="text-center text-white/50">
-                  <div className="text-8xl font-bold mb-4">أ.ن</div>
-                  <p className="text-sm">صورة الدكتور أيمن نور</p>
+          <p className="text-[22px] text-white/70 font-normal mb-6">
+            سياسي، مفكر، صحفي، إعلامي
+          </p>
+
+          <p className="text-base text-white/60 leading-[1.9] mb-8 max-w-[520px]">
+            أول مرشح رئاسي ينافس الرئيس مبارك في تاريخ مصر. مؤسس حزب الغد، رئيس اتحاد القوى الوطنية المصرية، ومالك قناة الشرق. أكثر من أربعة عقود من النضال السياسي من أجل مصر حرة ديمقراطية.
+          </p>
+
+          {/* Stats */}
+          <div className="flex gap-8 mb-9">
+            {[
+              { number: "+40", label: "عاماً من النضال" },
+              { number: "11", label: "كتاباً مؤلفاً" },
+              { number: "3", label: "دورات برلمانية" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl font-black text-orange leading-none">
+                  {stat.number}
                 </div>
-                {/* Orange corner accents */}
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-orange rounded-tr-2xl" />
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-orange rounded-bl-2xl" />
+                <div className="text-xs text-white/50 font-medium mt-1">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="flex gap-4 flex-wrap">
+            <a
+              href="/biography"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline bg-gradient-to-br from-orange to-orange-dark text-white shadow-[0_4px_20px_rgba(232,116,42,0.4)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(232,116,42,0.5)] transition-all"
+            >
+              <i className="fas fa-route" /> اكتشف المسيرة
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline bg-transparent border-2 border-white/30 text-white hover:border-orange hover:bg-[rgba(232,116,42,0.1)] transition-all"
+            >
+              <i className="fas fa-envelope" /> تواصل معنا
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Image */}
+        <motion.div
+          className="hidden lg:flex justify-center items-center"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="relative w-[380px] h-[460px]">
+            <div className="w-full h-full bg-gradient-to-br from-navy-light to-navy-mid rounded-[20px] border-[3px] border-[rgba(232,116,42,0.3)] flex items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+              <div className="text-center text-white/40">
+                <i className="fas fa-user text-[80px] mb-4 block" />
+                <p className="text-sm">صورة الدكتور أيمن نور</p>
               </div>
             </div>
-          </FadeIn>
-        </div>
-      </Container>
+            {/* Accent corners */}
+            <div className="absolute -top-5 -right-5 w-[120px] h-[120px] border-[3px] border-orange rounded-xl opacity-30" />
+            <div className="absolute -bottom-5 -left-5 w-[120px] h-[120px] border-[3px] border-orange rounded-xl opacity-30" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom orange line */}
+      <div className="absolute bottom-0 right-0 left-0 h-1 bg-gradient-to-l from-transparent via-orange to-transparent" />
     </section>
   );
 }

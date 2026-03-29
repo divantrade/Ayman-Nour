@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Timeline from "@/components/biography/Timeline";
-import { GraduationCap, User, Briefcase, MapPin, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "السيرة الذاتية",
-  description:
-    "السيرة الذاتية الكاملة للدكتور أيمن نور — من الميلاد في المنصورة إلى قيادة المعارضة المصرية. خط زمني تفاعلي لأبرز المحطات.",
+  description: "السيرة الذاتية الكاملة للدكتور أيمن نور — من الميلاد في المنصورة إلى قيادة المعارضة المصرية.",
 };
 
 const personalInfo = [
-  { icon: User, label: "الاسم الكامل", value: "أيمن عبد العزيز نور" },
-  { icon: MapPin, label: "مكان الميلاد", value: "المنصورة، الدقهلية، مصر" },
-  { icon: Briefcase, label: "المهنة", value: "سياسي، محامي، كاتب، إعلامي" },
-  { icon: Heart, label: "التوجه السياسي", value: "ليبرالي إصلاحي" },
-  { icon: MapPin, label: "الإقامة الحالية", value: "إسطنبول، تركيا" },
+  { icon: "fa-user", label: "الاسم الكامل", value: "أيمن عبد العزيز نور" },
+  { icon: "fa-map-marker-alt", label: "مكان الميلاد", value: "المنصورة، الدقهلية، مصر" },
+  { icon: "fa-briefcase", label: "المهنة", value: "سياسي، محامي، كاتب، إعلامي" },
+  { icon: "fa-heart", label: "التوجه السياسي", value: "ليبرالي إصلاحي" },
+  { icon: "fa-location-dot", label: "الإقامة الحالية", value: "إسطنبول، تركيا" },
 ];
 
 const education = [
@@ -31,22 +28,22 @@ export default function BiographyPage() {
   return (
     <>
       <PageHero
-        title="السيرة الذاتية"
-        subtitle="مسيرة نضال وعطاء امتدت لأكثر من أربعين عاماً في خدمة مصر وحريتها"
+        label="السيرة الذاتية"
+        title="أكثر من أربعة عقود"
+        subtitle="من اتحاد طلاب الثانوية إلى قيادة المعارضة المصرية في المنفى"
       />
 
       {/* Personal Info */}
-      <section className="py-16 bg-white">
-        <Container>
-          <SectionHeader title="البيانات الأساسية" />
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionHeader label="البيانات" title="المعلومات الأساسية" />
           <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
               {personalInfo.map((info) => (
-                <div
-                  key={info.label}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-off-white"
-                >
-                  <info.icon className="text-orange mt-1 flex-shrink-0" size={20} />
+                <div key={info.label} className="flex items-start gap-4 p-5 rounded-xl bg-off-white">
+                  <div className="w-10 h-10 rounded-[10px] bg-[rgba(232,116,42,0.15)] flex items-center justify-center text-orange flex-shrink-0">
+                    <i className={`fas ${info.icon}`} />
+                  </div>
                   <div>
                     <p className="text-sm text-text-secondary">{info.label}</p>
                     <p className="font-semibold text-text-primary">{info.value}</p>
@@ -55,83 +52,61 @@ export default function BiographyPage() {
               ))}
             </div>
           </FadeIn>
-        </Container>
+        </div>
       </section>
 
       {/* Family */}
-      <section className="py-16 bg-off-white">
-        <Container>
-          <SectionHeader title="الحياة الشخصية" />
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionHeader label="العائلة" title="الحياة الشخصية" />
           <FadeIn>
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-100">
-                <h3 className="font-bold text-text-primary mb-3 text-lg">العائلة</h3>
-                <div className="space-y-3 text-text-secondary leading-relaxed">
-                  <p>
-                    <strong className="text-text-primary">والده:</strong> محامٍ بارز
-                    وعضو سابق في مجلس الشعب المصري، ورث عنه أيمن نور شغف العمل
-                    العام والدفاع عن الحقوق.
-                  </p>
-                  <p>
-                    <strong className="text-text-primary">والدته:</strong> سيدة
-                    فاضلة اشتهرت بمشاريعها الخيرية وخدمة المجتمع.
-                  </p>
-                  <p>
-                    <strong className="text-text-primary">زوجته الأولى:</strong>{" "}
-                    جميلة إسماعيل — إعلامية وناشطة سياسية بارزة، عاشا معاً عشرين
-                    عاماً قبل أن ينفصلا.
-                  </p>
-                  <p>
-                    <strong className="text-text-primary">زوجته الحالية:</strong>{" "}
-                    دعاء حسن — مقدمة برنامج &quot;أنا الشعب&quot; على قناة الشرق.
-                  </p>
-                  <p>
-                    <strong className="text-text-primary">الأبناء:</strong> له ولدان.
-                  </p>
-                </div>
+            <div className="max-w-3xl mx-auto bg-white rounded-xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">
+              <div className="space-y-4 text-text-secondary leading-[1.8]">
+                <p><strong className="text-text-primary">والده:</strong> محامٍ بارز وعضو سابق في مجلس الشعب المصري، ورث عنه أيمن نور شغف العمل العام والدفاع عن الحقوق.</p>
+                <p><strong className="text-text-primary">والدته:</strong> سيدة فاضلة اشتهرت بمشاريعها الخيرية وخدمة المجتمع.</p>
+                <p><strong className="text-text-primary">زوجته الأولى:</strong> جميلة إسماعيل — إعلامية وناشطة سياسية بارزة، عاشا معاً عشرين عاماً قبل أن ينفصلا.</p>
+                <p><strong className="text-text-primary">زوجته الحالية:</strong> دعاء حسن — مقدمة برنامج &quot;أنا الشعب&quot; على قناة الشرق.</p>
+                <p><strong className="text-text-primary">الأبناء:</strong> له ولدان.</p>
               </div>
             </div>
           </FadeIn>
-        </Container>
+        </div>
       </section>
 
       {/* Education */}
-      <section className="py-16 bg-white">
-        <Container>
-          <SectionHeader title="التعليم والمؤهلات الأكاديمية" />
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionHeader label="التعليم" title="المؤهلات الأكاديمية" />
           <FadeIn>
-            <div className="max-w-3xl mx-auto">
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-off-white border-r-4 border-orange"
-                  >
-                    <GraduationCap className="text-orange flex-shrink-0" size={24} />
-                    <div>
-                      <p className="font-bold text-text-primary">{edu.degree}</p>
-                      <p className="text-sm text-text-secondary">
-                        {edu.institution}
-                        {edu.year && ` (${edu.year})`}
-                      </p>
-                    </div>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {education.map((edu, i) => (
+                <div key={i} className="flex items-center gap-4 p-5 rounded-xl bg-off-white border-r-4 border-r-orange">
+                  <div className="w-10 h-10 rounded-[10px] bg-[rgba(232,116,42,0.15)] flex items-center justify-center text-orange flex-shrink-0">
+                    <i className="fas fa-graduation-cap" />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <p className="font-bold text-text-primary">{edu.degree}</p>
+                    <p className="text-sm text-text-secondary">
+                      {edu.institution}{edu.year && ` (${edu.year})`}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </FadeIn>
-        </Container>
+        </div>
       </section>
 
       {/* Timeline */}
-      <section className="py-16 bg-off-white">
-        <Container>
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
-            title="الخط الزمني"
-            subtitle="المحطات الرئيسية في مسيرة الدكتور أيمن نور من 1964 إلى 2026"
+            label="المسيرة السياسية"
+            title="أكثر من أربعة عقود"
+            subtitle="من اتحاد طلاب الثانوية إلى قيادة المعارضة المصرية في المنفى"
           />
           <Timeline />
-        </Container>
+        </div>
       </section>
     </>
   );

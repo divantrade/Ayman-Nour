@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { Play, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "المقابلات",
@@ -21,41 +19,29 @@ const interviews = [
 export default function InterviewsPage() {
   return (
     <>
-      <PageHero
-        title="المقابلات"
-        subtitle="مقابلات مع كبرى المحطات والمؤسسات الإعلامية العربية والدولية"
-      />
-
-      <section className="py-16 bg-off-white">
-        <Container>
+      <PageHero label="الإعلام" title="المقابلات" subtitle="مقابلات مع كبرى المحطات والمؤسسات الإعلامية العربية والدولية" />
+      <section className="py-20 bg-off-white">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {interviews.map((interview, index) => (
               <FadeIn key={index} delay={index * 0.1}>
-                <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:border-orange/30 hover:shadow-md transition-all group">
-                  {/* Video placeholder */}
-                  <div className="bg-navy aspect-video flex items-center justify-center relative">
-                    <Play
-                      size={48}
-                      className="text-white/30 group-hover:text-orange transition-colors"
-                    />
-                    <div className="absolute bottom-3 right-3 px-3 py-1 bg-black/50 text-white text-xs rounded">
-                      {interview.channel}
-                    </div>
+                <div className="bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 hover:border-orange hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all group">
+                  <div className="bg-gradient-to-br from-navy to-navy-light aspect-video flex items-center justify-center relative">
+                    <i className="fas fa-play text-5xl text-white/30 group-hover:text-orange transition-colors" />
+                    <div className="absolute bottom-3 right-3 px-3 py-1 bg-black/50 text-white text-xs rounded">{interview.channel}</div>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-bold text-text-primary mb-2 flex items-center gap-2">
+                    <h3 className="font-bold text-navy mb-2 flex items-center gap-2">
                       {interview.channel}
-                      <ExternalLink size={14} className="text-gray-400" />
+                      <i className="fas fa-external-link-alt text-gray-400 text-xs" />
                     </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed">
-                      {interview.description}
-                    </p>
+                    <p className="text-text-secondary text-sm leading-relaxed">{interview.description}</p>
                   </div>
                 </div>
               </FadeIn>
             ))}
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

@@ -1,39 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import PageHero from "@/components/ui/PageHero";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import Button from "@/components/ui/Button";
-import {
-  Mail,
-  Send,
-  AtSign,
-  Globe,
-  ExternalLink,
-  CheckCircle,
-} from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
 
-const socialLinks = [
-  {
-    icon: AtSign,
-    label: "Twitter / X",
-    handle: "@AymanNour",
-    href: "https://twitter.com/AymanNour",
-  },
-  {
-    icon: Globe,
-    label: "Facebook",
-    handle: "dr.Aymannour",
-    href: "https://facebook.com/dr.Aymannour",
-  },
-];
-
-const importantSites = [
-  { label: "أخبار الغد", href: "https://ghadnews.net" },
-  { label: "اتحاد القوى الوطنية", href: "https://egyna.org" },
-  { label: "المجلس العربي", href: "https://arabcouncil.foundation" },
-  { label: "قناة الشرق", href: "https://elsharq.tv" },
+const contactItems = [
+  { icon: "fab fa-x-twitter", label: "تويتر / X", value: "@AymanNour", href: "https://twitter.com/AymanNour" },
+  { icon: "fab fa-facebook-f", label: "فيسبوك", value: "facebook.com/dr.Aymannour", href: "https://facebook.com/dr.Aymannour" },
+  { icon: "fas fa-globe", label: "موقع أخبار الغد", value: "ghadnews.net", href: "https://ghadnews.net" },
+  { icon: "fas fa-tv", label: "قناة الشرق", value: "elsharq.tv", href: "https://elsharq.tv" },
+  { icon: "fas fa-building-columns", label: "اتحاد القوى الوطنية", value: "egyna.org", href: "https://egyna.org" },
 ];
 
 export default function ContactPage() {
@@ -45,175 +21,94 @@ export default function ContactPage() {
   };
 
   return (
-    <>
-      <PageHero
-        title="تواصل معنا"
-        subtitle="يسعدنا التواصل معكم واستقبال رسائلكم واقتراحاتكم"
-      />
+    <section className="bg-navy text-white min-h-screen">
+      <div className="py-20">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <SectionHeader
+            label="تواصل"
+            title="تواصل معنا"
+            subtitle="للتواصل مع مكتب الدكتور أيمن نور"
+            light
+          />
 
-      <section className="py-16 bg-off-white">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Info */}
             <FadeIn direction="right">
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <div className="flex items-center gap-3 mb-6">
-                  <Mail className="text-orange" size={24} />
-                  <h2 className="text-2xl font-bold text-text-primary">
-                    أرسل رسالة
-                  </h2>
-                </div>
-
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <CheckCircle
-                      size={64}
-                      className="text-green-500 mx-auto mb-4"
-                    />
-                    <h3 className="text-xl font-bold text-text-primary mb-2">
-                      تم إرسال رسالتك بنجاح
-                    </h3>
-                    <p className="text-text-secondary">
-                      شكراً لتواصلكم. سنعود إليكم في أقرب وقت.
-                    </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="mt-6 text-orange font-semibold hover:underline"
-                    >
-                      إرسال رسالة أخرى
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-1.5">
-                        الاسم الكامل
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm"
-                        placeholder="أدخل اسمك الكامل"
-                      />
+              <div className="flex flex-col gap-5">
+                {contactItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-lg no-underline transition-all hover:bg-[rgba(232,116,42,0.1)] hover:border-[rgba(232,116,42,0.3)]"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-white text-lg flex-shrink-0">
+                      <i className={item.icon} />
                     </div>
-
                     <div>
-                      <label className="block text-sm font-medium text-text-primary mb-1.5">
-                        البريد الإلكتروني
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm"
-                        placeholder="example@email.com"
-                        dir="ltr"
-                      />
+                      <div className="text-xs text-white/50">{item.label}</div>
+                      <div className="text-[15px] text-white font-semibold" dir="ltr">{item.value}</div>
                     </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-1.5">
-                        الموضوع
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm"
-                        placeholder="موضوع الرسالة"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-1.5">
-                        الرسالة
-                      </label>
-                      <textarea
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none"
-                        placeholder="اكتب رسالتك هنا..."
-                      />
-                    </div>
-
-                    <Button type="submit" variant="primary" className="w-full">
-                      <Send size={18} />
-                      إرسال الرسالة
-                    </Button>
-                  </form>
-                )}
+                  </a>
+                ))}
               </div>
             </FadeIn>
 
-            {/* Contact Info */}
+            {/* Contact Form */}
             <FadeIn direction="left" delay={0.2}>
-              <div className="space-y-8">
-                {/* Social Media */}
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                  <h2 className="text-xl font-bold text-text-primary mb-6">
-                    التواصل الاجتماعي
-                  </h2>
-                  <div className="space-y-4">
-                    {socialLinks.map((social) => (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 p-4 rounded-xl bg-off-white hover:bg-orange/5 transition-colors group"
-                      >
-                        <div className="w-12 h-12 rounded-full bg-orange/10 flex items-center justify-center group-hover:bg-orange/20 transition-colors">
-                          <social.icon className="text-orange" size={22} />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-text-primary">
-                            {social.label}
-                          </p>
-                          <p className="text-text-secondary text-sm">
-                            {social.handle}
-                          </p>
-                        </div>
-                        <ExternalLink
-                          size={16}
-                          className="mr-auto text-gray-400"
-                        />
-                      </a>
-                    ))}
-                  </div>
+              {submitted ? (
+                <div className="text-center py-16">
+                  <i className="fas fa-check-circle text-green-400 text-6xl mb-4 block" />
+                  <h3 className="text-xl font-bold mb-2">تم إرسال رسالتك بنجاح</h3>
+                  <p className="text-white/60">شكراً لتواصلكم. سنعود إليكم في أقرب وقت.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-6 text-orange font-semibold hover:underline bg-transparent border-none cursor-pointer"
+                  >
+                    إرسال رسالة أخرى
+                  </button>
                 </div>
-
-                {/* Important Sites */}
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                  <h2 className="text-xl font-bold text-text-primary mb-6">
-                    مواقع مهمة
-                  </h2>
-                  <div className="space-y-3">
-                    {importantSites.map((site) => (
-                      <a
-                        key={site.label}
-                        href={site.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-off-white transition-colors group"
-                      >
-                        <Globe
-                          className="text-orange flex-shrink-0"
-                          size={18}
-                        />
-                        <span className="text-text-primary font-medium text-sm group-hover:text-orange transition-colors">
-                          {site.label}
-                        </span>
-                        <ExternalLink
-                          size={14}
-                          className="mr-auto text-gray-400"
-                        />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <input
+                    type="text"
+                    required
+                    placeholder="الاسم الكامل"
+                    className="w-full px-[18px] py-3.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-white text-sm outline-none transition-colors focus:border-orange placeholder:text-white/30"
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="البريد الإلكتروني"
+                    dir="ltr"
+                    style={{ textAlign: "right" }}
+                    className="w-full px-[18px] py-3.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-white text-sm outline-none transition-colors focus:border-orange placeholder:text-white/30"
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="الموضوع"
+                    className="w-full px-[18px] py-3.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-white text-sm outline-none transition-colors focus:border-orange placeholder:text-white/30"
+                  />
+                  <textarea
+                    required
+                    placeholder="الرسالة..."
+                    rows={5}
+                    className="w-full px-[18px] py-3.5 bg-white/[0.08] border border-white/[0.15] rounded-lg text-white text-sm outline-none transition-colors focus:border-orange placeholder:text-white/30 resize-y"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-br from-orange to-orange-dark text-white border-none px-8 py-3.5 rounded-full text-[15px] font-semibold cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(232,116,42,0.4)]"
+                  >
+                    <i className="fas fa-paper-plane" />&nbsp; إرسال الرسالة
+                  </button>
+                </form>
+              )}
             </FadeIn>
           </div>
-        </Container>
-      </section>
-    </>
+        </div>
+      </div>
+    </section>
   );
 }

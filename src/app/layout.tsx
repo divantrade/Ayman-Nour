@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: {
-    default: "د. أيمن نور — سياسي ومفكر ليبرالي مصري",
+    default: "د. أيمن نور — سياسي، مفكر، مناضل من أجل الحرية",
     template: "%s | د. أيمن نور",
   },
   description:
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ar_EG",
     siteName: "د. أيمن نور",
-    title: "د. أيمن نور — سياسي ومفكر ليبرالي مصري",
+    title: "د. أيمن نور — سياسي، مفكر، مناضل من أجل الحرية",
     description:
       "الموقع الرسمي للدكتور أيمن عبد العزيز نور — سياسي مصري معارض، مفكر ليبرالي، ومؤسس حزب الغد.",
   },
@@ -41,18 +42,15 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="antialiased">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap"
           rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
         <script
           type="application/ld+json"
@@ -78,6 +76,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

@@ -1,22 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { timelineEvents } from "@/data/timeline";
-import { ChevronDown } from "lucide-react";
 
 export default function Timeline() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
   return (
-    <div className="relative py-8">
+    <div className="relative py-5">
       {/* Central line */}
       <div className="timeline-line" />
 
-      <div className="space-y-12">
+      <div className="space-y-10">
         {timelineEvents.map((event, index) => {
-          const isEven = index % 2 === 0;
-          const isExpanded = expandedIndex === index;
+          const isOdd = index % 2 !== 0;
 
           return (
             <motion.div
@@ -24,62 +19,36 @@ export default function Timeline() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className={`relative flex items-center ${
-                isEven
-                  ? "md:flex-row-reverse md:text-right"
-                  : "md:flex-row md:text-right"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className={`relative flex items-start ${
+                isOdd ? "md:flex-row-reverse" : "md:flex-row"
               } flex-row`}
             >
-              {/* Content */}
+              {/* Content Card */}
               <div
-                className={`w-full md:w-[calc(50%-2rem)] ${
-                  isEven ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8"
-                } mr-12 md:mr-0`}
+                className={`w-full md:w-[45%] ${
+                  isOdd ? "md:mr-auto" : "md:ml-auto"
+                } mr-10 md:mr-0`}
               >
-                <button
-                  onClick={() =>
-                    setExpandedIndex(isExpanded ? null : index)
-                  }
-                  className="w-full text-right bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 hover:border-orange/30 cursor-pointer group"
+                <div
+                  className={`bg-white rounded-xl p-6 shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] ${
+                    isOdd
+                      ? "border-r-0 md:border-r-0 md:border-l-4 border-r-4 md:border-l-orange border-r-orange"
+                      : "border-r-4 border-r-orange"
+                  }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <span className="inline-block px-3 py-1 bg-orange/10 text-orange rounded-full text-sm font-bold mb-2">
-                        {event.year}
-                      </span>
-                      <h3 className="text-lg font-bold text-text-primary group-hover:text-orange transition-colors">
-                        {event.title}
-                      </h3>
-                    </div>
-                    <ChevronDown
-                      size={20}
-                      className={`text-gray-400 transition-transform mt-1 flex-shrink-0 ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-text-secondary text-sm leading-relaxed mt-4 pt-4 border-t border-gray-100">
-                          {event.description}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
+                  <span className="inline-block bg-gradient-to-br from-orange to-orange-dark text-white px-3.5 py-1 rounded-full text-[13px] font-bold mb-2.5">
+                    {event.year}
+                  </span>
+                  <h3 className="text-lg font-bold text-navy mb-2">{event.title}</h3>
+                  <p className="text-sm text-text-secondary leading-[1.8]">
+                    {event.description}
+                  </p>
+                </div>
               </div>
 
               {/* Dot */}
-              <div className="absolute right-[17px] md:right-1/2 md:translate-x-1/2 w-4 h-4 rounded-full bg-orange border-4 border-white shadow-md z-10" />
+              <div className="absolute right-[11px] md:right-1/2 md:translate-x-1/2 top-6 w-5 h-5 bg-orange border-4 border-off-white rounded-full z-[2]" />
             </motion.div>
           );
         })}

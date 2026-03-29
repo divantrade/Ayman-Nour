@@ -1,79 +1,74 @@
 "use client";
 
-import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
+import Link from "next/link";
 import FadeIn from "@/components/ui/FadeIn";
-import { Tv, ExternalLink } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
+
+const programs = [
+  { name: "مع معتز", host: "معتز مطر", icon: "fa-microphone" },
+  { name: "الشارع المصري", host: "عماد البحيري وأحمد عطوان", icon: "fa-users" },
+  { name: "أنا الشعب", host: "دعاء حسن", icon: "fa-bullhorn" },
+  { name: "ابن البلد", host: "هشام عبد الله", icon: "fa-flag" },
+  { name: "هاي تك", host: "عمر الشال", icon: "fa-laptop" },
+  { name: "بالتأكيد", host: "هشام عبد الحميد", icon: "fa-check-double" },
+];
 
 export default function ElsharqSection() {
   return (
-    <section className="bg-navy text-white py-16 md:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-60 h-60 rounded-full bg-orange blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-orange blur-3xl" />
-      </div>
+    <section className="py-20 relative overflow-hidden" style={{
+      background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)"
+    }}>
+      <div className="absolute inset-0" style={{
+        background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"
+      }} />
 
-      <Container className="relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-[2]">
+        <SectionHeader
+          label="الإعلام"
+          title="قناة الشرق"
+          subtitle="الحقيقة والأمل - تبث من إسطنبول منذ 2014"
+          light
+        />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <FadeIn direction="right">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Tv className="text-orange" size={28} />
-                <h2 className="text-3xl md:text-4xl font-bold">قناة الشرق</h2>
-              </div>
-              <div className="w-20 h-1 bg-gradient-to-l from-orange to-orange-dark rounded-full mb-6" />
-              <p className="text-gray-300 leading-relaxed mb-4">
-                قناة فضائية مصرية معارضة، انطلقت في 25 أبريل 2014 وتبث من
-                إسطنبول. يملكها الدكتور أيمن نور منذ أغسطس 2015، وتحمل شعار
-                &quot;الحقيقة والأمل&quot;.
-              </p>
-              <p className="text-gray-300 leading-relaxed mb-8">
-                تقدم القناة باقة متنوعة من البرامج السياسية والاجتماعية، وتُعد من
-                أبرز المنابر الإعلامية للمعارضة المصرية.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button href="/media/elsharq">
-                  <Tv size={18} />
-                  شاهد البث المباشر
-                </Button>
-                <Button href="/media" variant="outline">
-                  <ExternalLink size={18} />
-                  المزيد عن الإعلام
-                </Button>
-              </div>
+            <div className="inline-flex items-center gap-2 bg-[rgba(232,116,42,0.15)] border border-[rgba(232,116,42,0.3)] px-3.5 py-1.5 rounded-full text-orange-light text-[13px] mb-5">
+              <i className="fas fa-satellite-dish" /> بث مباشر على نايلسات
             </div>
+            <h3 className="text-[28px] text-white font-bold mb-4">
+              تلفزيون <span className="text-orange">الشرق</span>
+            </h3>
+            <p className="text-white/70 text-[15px] leading-[1.9] mb-6">
+              قناة فضائية مصرية معارضة انطلقت في 25 أبريل 2014. انتقلت ملكيتها إلى الدكتور أيمن نور في أغسطس 2015. تبث من إسطنبول وتقدم تغطية شاملة للأوضاع المصرية والعربية.
+            </p>
+            <Link
+              href="/media/elsharq"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline bg-gradient-to-br from-orange to-orange-dark text-white shadow-[0_4px_20px_rgba(232,116,42,0.4)] hover:-translate-y-0.5 transition-all"
+            >
+              <i className="fas fa-play" /> شاهد البث المباشر
+            </Link>
           </FadeIn>
 
           <FadeIn direction="left" delay={0.2}>
-            <div className="bg-navy-light rounded-2xl p-8 border border-white/10">
-              <h3 className="text-xl font-bold mb-6 text-orange">
-                أبرز البرامج
-              </h3>
-              <div className="space-y-4">
-                {[
-                  { name: "مع معتز", presenter: "معتز مطر" },
-                  { name: "الشارع المصري", presenter: "عماد البحيري وأحمد عطوان" },
-                  { name: "أنا الشعب", presenter: "دعاء حسن" },
-                  { name: "ابن البلد", presenter: "هشام عبد الله" },
-                ].map((program) => (
-                  <div
-                    key={program.name}
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-orange flex-shrink-0" />
-                    <div>
-                      <span className="font-semibold">{program.name}</span>
-                      <span className="text-gray-400 text-sm mr-2">
-                        — {program.presenter}
-                      </span>
-                    </div>
+            <div className="flex flex-col gap-3">
+              {programs.map((program) => (
+                <div
+                  key={program.name}
+                  className="flex items-center gap-3.5 bg-white/5 border border-white/[0.08] px-[18px] py-3.5 rounded-lg transition-all hover:bg-[rgba(232,116,42,0.1)] hover:border-[rgba(232,116,42,0.3)]"
+                >
+                  <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-white text-base flex-shrink-0">
+                    <i className={`fas ${program.icon}`} />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <div className="text-white text-[15px] font-semibold">{program.name}</div>
+                    <div className="text-white/50 text-[13px]">تقديم: {program.host}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </FadeIn>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

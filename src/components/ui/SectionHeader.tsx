@@ -3,26 +3,36 @@
 import FadeIn from "./FadeIn";
 
 interface SectionHeaderProps {
+  label?: string;
   title: string;
   subtitle?: string;
   light?: boolean;
 }
 
-export default function SectionHeader({ title, subtitle, light }: SectionHeaderProps) {
+export default function SectionHeader({ label, title, subtitle, light }: SectionHeaderProps) {
   return (
-    <FadeIn className="text-center mb-12">
+    <FadeIn className="text-center mb-14">
+      {label && (
+        <div className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[2px] mb-3 ${
+          light ? "text-orange-light" : "text-orange"
+        }`}>
+          <span className="w-6 h-[2px] bg-orange inline-block" />
+          {label}
+          <span className="w-6 h-[2px] bg-orange inline-block" />
+        </div>
+      )}
       <h2
-        className={`text-3xl md:text-4xl font-bold mb-4 ${
+        className={`text-4xl font-extrabold mb-4 leading-tight ${
           light ? "text-white" : "text-text-primary"
         }`}
       >
         {title}
+        <span className="text-orange">.</span>
       </h2>
-      <div className="w-20 h-1 bg-gradient-to-l from-orange to-orange-dark mx-auto rounded-full mb-4" />
       {subtitle && (
         <p
-          className={`text-lg max-w-2xl mx-auto ${
-            light ? "text-gray-300" : "text-text-secondary"
+          className={`text-base max-w-[600px] mx-auto ${
+            light ? "text-white/60" : "text-text-secondary"
           }`}
         >
           {subtitle}

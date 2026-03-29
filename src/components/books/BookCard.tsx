@@ -3,7 +3,6 @@
 import Link from "next/link";
 import FadeIn from "@/components/ui/FadeIn";
 import type { Book } from "@/data/books";
-import { BookOpen, ArrowLeft } from "lucide-react";
 
 interface BookCardProps {
   book: Book;
@@ -13,32 +12,25 @@ interface BookCardProps {
 export default function BookCard({ book, index }: BookCardProps) {
   return (
     <FadeIn delay={index * 0.1}>
-      <Link href={`/books/${book.slug}`} className="group block h-full">
-        <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-orange/30 h-full flex flex-col">
-          {/* Cover placeholder */}
-          <div className="bg-gradient-to-br from-navy to-navy-light p-8 flex items-center justify-center aspect-[3/4] max-h-64">
-            <div className="text-center text-white">
-              <BookOpen size={48} className="mx-auto mb-4 opacity-50" />
-              <p className="text-lg font-bold leading-relaxed">{book.title}</p>
-              {book.year && (
-                <span className="inline-block mt-2 px-3 py-1 bg-orange/20 text-orange rounded-full text-sm font-bold">
-                  {book.year}
-                </span>
-              )}
-            </div>
+      <Link href={`/books/${book.slug}`} className="group block h-full no-underline">
+        <div className="bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:border-orange h-full">
+          {/* Cover */}
+          <div className="h-[200px] bg-gradient-to-br from-navy to-navy-light flex items-center justify-center relative">
+            <i className="fas fa-book text-5xl text-[rgba(232,116,42,0.6)]" />
+            {book.year && (
+              <span className="absolute top-3 left-3 bg-orange text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
+                {book.year}
+              </span>
+            )}
           </div>
 
-          <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-orange transition-colors">
+          <div className="p-5">
+            <h3 className="text-base font-bold text-navy mb-2 leading-relaxed group-hover:text-orange transition-colors">
               {book.title}
             </h3>
-            <p className="text-text-secondary text-sm leading-relaxed flex-1">
+            <p className="text-[13px] text-text-secondary leading-[1.7]">
               {book.summary}
             </p>
-            <span className="inline-flex items-center gap-2 text-orange text-sm font-semibold mt-4 group-hover:gap-3 transition-all">
-              اقرأ المزيد
-              <ArrowLeft size={16} />
-            </span>
           </div>
         </div>
       </Link>
