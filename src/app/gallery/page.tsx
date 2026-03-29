@@ -1,0 +1,221 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import PageHero from "@/components/ui/PageHero";
+import Container from "@/components/ui/Container";
+import FadeIn from "@/components/ui/FadeIn";
+import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+
+interface GalleryItem {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+}
+
+const categories = [
+  "الكل",
+  "السنوات المبكرة",
+  "البرلمان",
+  "الحملة الرئاسية",
+  "التضامن الدولي",
+  "المنفى والنضال",
+];
+
+const galleryItems: GalleryItem[] = [
+  { id: 1, category: "السنوات المبكرة", title: "أيام الجامعة", description: "من أيام كلية الحقوق بجامعة المنصورة" },
+  { id: 2, category: "السنوات المبكرة", title: "بدايات العمل الصحفي", description: "في بداية مسيرته الصحفية" },
+  { id: 3, category: "البرلمان", title: "في مجلس الشعب", description: "أصغر عضو في مجلس الشعب المصري عام 1995" },
+  { id: 4, category: "البرلمان", title: "جلسة برلمانية", description: "خلال إحدى الجلسات البرلمانية" },
+  { id: 5, category: "البرلمان", title: "عمل برلماني", description: "أثناء ممارسة العمل البرلماني" },
+  { id: 6, category: "الحملة الرئاسية", title: "إعلان الترشح", description: "لحظة إعلان الترشح للانتخابات الرئاسية 2005" },
+  { id: 7, category: "الحملة الرئاسية", title: "حشد انتخابي", description: "خلال حملته الانتخابية التاريخية" },
+  { id: 8, category: "الحملة الرئاسية", title: "مع المؤيدين", description: "بين أنصاره ومؤيديه خلال الحملة" },
+  { id: 9, category: "التضامن الدولي", title: "حملة التضامن", description: "من حملات التضامن الدولية للمطالبة بإطلاق سراحه" },
+  { id: 10, category: "التضامن الدولي", title: "دعم دولي", description: "شخصيات دولية تطالب بحريته" },
+  { id: 11, category: "المنفى والنضال", title: "في إسطنبول", description: "يواصل نضاله من المنفى في إسطنبول" },
+  { id: 12, category: "المنفى والنضال", title: "قناة الشرق", description: "في استوديوهات قناة الشرق" },
+  { id: 13, category: "المنفى والنضال", title: "اتحاد القوى الوطنية", description: "خلال اجتماعات اتحاد القوى الوطنية المصرية" },
+  { id: 14, category: "المنفى والنضال", title: "التحالف الأفريقي", description: "المشاركة في تأسيس التحالف الديمقراطي الأفريقي في الدار البيضاء 2026" },
+];
+
+const colors = [
+  "from-navy to-navy-light",
+  "from-orange-dark to-orange",
+  "from-navy-light to-navy",
+  "from-orange to-orange-light",
+];
+
+export default function GalleryPage() {
+  const [selectedCategory, setSelectedCategory] = useState("الكل");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const filteredItems =
+    selectedCategory === "الكل"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === selectedCategory);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const goNext = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % filteredItems.length);
+    }
+  };
+  const goPrev = () => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex(
+        (lightboxIndex - 1 + filteredItems.length) % filteredItems.length
+      );
+    }
+  };
+
+  return (
+    <>
+      <PageHero
+        title="معرض الصور"
+        subtitle="لحظات من مسيرة نضال وعطاء امتدت لأكثر من أربعين عاماً"
+      />
+
+      <section className="py-16 bg-off-white">
+        <Container>
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === cat
+                    ? "bg-orange text-white shadow-lg"
+                    : "bg-white text-text-secondary hover:bg-gray-100 border border-gray-200"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {filteredItems.map((item, index) => (
+              <FadeIn key={item.id} delay={index * 0.05}>
+                <button
+                  onClick={() => openLightbox(index)}
+                  className="group relative rounded-xl overflow-hidden aspect-square w-full cursor-pointer"
+                >
+                  {/* Placeholder */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${
+                      colors[index % colors.length]
+                    } flex items-center justify-center`}
+                  >
+                    <div className="text-white/30 text-center p-4">
+                      <div className="text-4xl font-bold mb-2">{item.id}</div>
+                      <p className="text-xs">{item.title}</p>
+                    </div>
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-center p-4">
+                      <ZoomIn size={32} className="mx-auto mb-2" />
+                      <p className="text-sm font-semibold">{item.title}</p>
+                      <p className="text-xs text-white/70 mt-1">
+                        {item.category}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Note */}
+          <FadeIn>
+            <p className="text-center text-text-secondary text-sm mt-12">
+              سيتم إضافة المزيد من الصور قريباً — هذه placeholders مؤقتة
+            </p>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-6 left-6 text-white/70 hover:text-white z-10"
+            >
+              <X size={32} />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goPrev();
+              }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-10"
+            >
+              <ChevronRight size={40} />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goNext();
+              }}
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-10"
+            >
+              <ChevronLeft size={40} />
+            </button>
+
+            <motion.div
+              key={lightboxIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="max-w-3xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                className={`bg-gradient-to-br ${
+                  colors[lightboxIndex % colors.length]
+                } rounded-2xl aspect-[4/3] flex items-center justify-center`}
+              >
+                <div className="text-white text-center p-8">
+                  <div className="text-6xl font-bold mb-4">
+                    {filteredItems[lightboxIndex].id}
+                  </div>
+                  <p className="text-xl font-semibold">
+                    {filteredItems[lightboxIndex].title}
+                  </p>
+                  <p className="text-white/60 mt-2">
+                    {filteredItems[lightboxIndex].description}
+                  </p>
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-white font-semibold">
+                  {filteredItems[lightboxIndex].title}
+                </p>
+                <p className="text-white/50 text-sm mt-1">
+                  {filteredItems[lightboxIndex].description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

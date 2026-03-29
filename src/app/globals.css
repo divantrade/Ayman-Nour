@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #0F1E3D;
+  --color-navy-light: #1A2D54;
+  --color-orange: #E8742A;
+  --color-orange-light: #F09048;
+  --color-orange-dark: #D05E18;
+  --color-off-white: #F7F8FA;
+  --color-gray-100: #F0F1F3;
+  --color-gray-600: #6B7280;
+  --color-text-primary: #1A1D24;
+  --color-text-secondary: #4A4F5C;
+  --font-cairo: 'Cairo', sans-serif;
+}
+
+:root {
+  --orange-glow: rgba(232, 116, 42, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', Arial, Tahoma, sans-serif;
+  background: #F7F8FA;
+  color: #1A1D24;
+  direction: rtl;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F0F1F3;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8742A;
+  border-radius: 4px;
+}
+
+/* News ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+}
+
+/* Timeline line */
+.timeline-line {
+  position: absolute;
+  right: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #E8742A, #D05E18);
+  transform: translateX(50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    right: 20px;
+    transform: none;
+  }
+}
