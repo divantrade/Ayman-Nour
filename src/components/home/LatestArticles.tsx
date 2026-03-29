@@ -17,7 +17,7 @@ export default function LatestArticles() {
           subtitle="مقالات ورؤى سياسية من قلب المعارضة المصرية"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
           {latest.map((a) => (
             <Link key={a.slug} href={`/articles/${a.slug}`} className="no-underline group">
               <div

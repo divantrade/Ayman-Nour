@@ -35,7 +35,7 @@ export default function PegasusSection() {
               أصبحت القضية مرجعاً رئيسياً في النقاش العالمي حول مخاطر برامج التجسس الحكومية وانتهاك خصوصية المعارضين السياسيين.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 24 }}>
               {[
                 { num: "2", label: "برنامجا تجسس في وقت واحد" },
                 { num: "#1", label: "أول حالة موثقة عالمياً" },

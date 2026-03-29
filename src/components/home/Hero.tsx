@@ -3,106 +3,117 @@
 export default function Hero() {
   return (
     <section
-      className="min-h-screen flex items-center relative overflow-hidden pt-[70px]"
-      style={{ background: "linear-gradient(160deg, #0F1E3D 0%, #15254A 50%, #1A2D54 100%)" }}
+      className="min-h-screen flex items-center relative overflow-hidden"
+      style={{
+        background: "linear-gradient(160deg, #0F1E3D 0%, #15254A 50%, #1A2D54 100%)",
+        paddingTop: 70,
+      }}
     >
-      {/* Background radials */}
       <div className="absolute inset-0" style={{
         background: "radial-gradient(ellipse at 20% 80%, rgba(232,116,42,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,116,42,0.05) 0%, transparent 50%)"
       }} />
       <div className="hero-pattern" />
 
-      <div className="container-main grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center relative z-[2]">
-        {/* Content */}
-        <div className="animate-fadeInRight">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold mb-6"
-            style={{
-              background: "rgba(232, 116, 42, 0.15)",
-              border: "1px solid rgba(232, 116, 42, 0.3)",
-              color: "#F09048",
-            }}
-          >
-            <i className="fas fa-circle text-[10px]" />
-            مناضل من أجل الحرية والديمقراطية
-          </div>
-
-          <h1 className="text-[52px] font-black text-white leading-[1.2] mb-2 max-md:text-4xl">
-            د. أيمن عبد العزيز <span className="text-orange">نور</span>
-          </h1>
-
-          <p className="text-[22px] font-normal mb-6 max-md:text-lg" style={{ color: "rgba(255,255,255,0.7)" }}>
-            سياسي، مفكر، صحفي، إعلامي
-          </p>
-
-          <p className="text-base leading-[1.9] mb-8 max-w-[520px]" style={{ color: "rgba(255,255,255,0.6)" }}>
-            أول مرشح رئاسي ينافس الرئيس مبارك في تاريخ مصر. مؤسس حزب الغد، رئيس اتحاد القوى الوطنية المصرية، ومالك قناة الشرق. أكثر من أربعة عقود من النضال السياسي من أجل مصر حرة ديمقراطية.
-          </p>
-
-          {/* Stats */}
-          <div className="flex gap-8 mb-9 max-md:justify-center">
-            {[
-              { num: "+40", label: "عاماً من النضال" },
-              { num: "11", label: "كتاباً مؤلفاً" },
-              { num: "3", label: "دورات برلمانية" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-4xl font-black text-orange leading-none">{s.num}</div>
-                <div className="text-xs font-medium mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-4 flex-wrap max-md:justify-center">
-            <a
-              href="/biography"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline text-white transition-all hover:-translate-y-0.5"
-              style={{
-                background: "linear-gradient(135deg, #E8742A, #D05E18)",
-                boxShadow: "0 4px 20px rgba(232,116,42,0.4)",
-              }}
-            >
-              <i className="fas fa-route" /> اكتشف المسيرة
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline text-white transition-all"
-              style={{ background: "transparent", border: "2px solid rgba(255,255,255,0.3)" }}
-            >
-              <i className="fas fa-envelope" /> تواصل معنا
-            </a>
-          </div>
-        </div>
-
-        {/* Image */}
-        <div className="hidden lg:flex justify-center items-center animate-fadeInLeft">
-          <div className="relative w-[380px] h-[460px]">
+      <div className="container-main relative" style={{ zIndex: 2 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+          {/* Content */}
+          <div className="animate-fadeInRight">
             <div
-              className="w-full h-full rounded-[20px] flex items-center justify-center overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, #1A2D54, #15254A)",
-                border: "3px solid rgba(232,116,42,0.3)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "rgba(232, 116, 42, 0.15)",
+                border: "1px solid rgba(232, 116, 42, 0.3)",
+                padding: "6px 16px", borderRadius: 50,
+                color: "#F09048", fontSize: 13, fontWeight: 600,
+                marginBottom: 24,
               }}
             >
-              <div className="text-center" style={{ color: "rgba(255,255,255,0.4)" }}>
-                <i className="fas fa-user text-[80px] mb-4 block" />
-                <p className="text-sm">صورة الدكتور أيمن نور</p>
-              </div>
+              <i className="fas fa-circle" style={{ fontSize: 10 }} />
+              مناضل من أجل الحرية والديمقراطية
             </div>
-            {/* Accent corners */}
-            <div className="absolute -top-5 -right-5 w-[120px] h-[120px] rounded-xl opacity-30" style={{ border: "3px solid #E8742A" }} />
-            <div className="absolute -bottom-5 -left-5 w-[120px] h-[120px] rounded-xl opacity-30" style={{ border: "3px solid #E8742A" }} />
+
+            <h1 style={{ fontSize: 52, fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 8 }}>
+              د. أيمن عبد العزيز <span style={{ color: "#E8742A" }}>نور</span>
+            </h1>
+
+            <p style={{ fontSize: 22, color: "rgba(255,255,255,0.7)", fontWeight: 400, marginBottom: 24 }}>
+              سياسي، مفكر، صحفي، إعلامي
+            </p>
+
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", lineHeight: 1.9, marginBottom: 32, maxWidth: 520 }}>
+              أول مرشح رئاسي ينافس الرئيس مبارك في تاريخ مصر. مؤسس حزب الغد، رئيس اتحاد القوى الوطنية المصرية، ومالك قناة الشرق. أكثر من أربعة عقود من النضال السياسي من أجل مصر حرة ديمقراطية.
+            </p>
+
+            <div style={{ display: "flex", gap: 32, marginBottom: 36 }}>
+              {[
+                { num: "+40", label: "عاماً من النضال" },
+                { num: "11", label: "كتاباً مؤلفاً" },
+                { num: "3", label: "دورات برلمانية" },
+              ].map((s) => (
+                <div key={s.label} style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: 36, fontWeight: 900, color: "#E8742A", lineHeight: 1 }}>{s.num}</div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", fontWeight: 500, marginTop: 4 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <a
+                href="/biography"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  padding: "14px 32px", borderRadius: 50,
+                  fontFamily: "inherit", fontSize: 15, fontWeight: 600,
+                  textDecoration: "none", color: "#fff",
+                  background: "linear-gradient(135deg, #E8742A, #D05E18)",
+                  boxShadow: "0 4px 20px rgba(232,116,42,0.4)",
+                }}
+              >
+                <i className="fas fa-route" /> اكتشف المسيرة
+              </a>
+              <a
+                href="/contact"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  padding: "14px 32px", borderRadius: 50,
+                  fontFamily: "inherit", fontSize: 15, fontWeight: 600,
+                  textDecoration: "none", color: "#fff",
+                  background: "transparent",
+                  border: "2px solid rgba(255,255,255,0.3)",
+                }}
+              >
+                <i className="fas fa-envelope" /> تواصل معنا
+              </a>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="animate-fadeInLeft hidden lg:flex">
+            <div style={{ position: "relative", width: 380, height: 460 }}>
+              <div
+                style={{
+                  width: "100%", height: "100%",
+                  background: "linear-gradient(135deg, #1A2D54, #15254A)",
+                  borderRadius: 20,
+                  border: "3px solid rgba(232,116,42,0.3)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  overflow: "hidden",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+                }}
+              >
+                <div style={{ textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
+                  <i className="fas fa-user" style={{ fontSize: 80, marginBottom: 16, display: "block" }} />
+                  <p style={{ fontSize: 14 }}>صورة الدكتور أيمن نور</p>
+                </div>
+              </div>
+              <div style={{ position: "absolute", width: 120, height: 120, border: "3px solid #E8742A", borderRadius: 12, opacity: 0.3, top: -20, right: -20 }} />
+              <div style={{ position: "absolute", width: 120, height: 120, border: "3px solid #E8742A", borderRadius: 12, opacity: 0.3, bottom: -20, left: -20 }} />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom orange line */}
-      <div
-        className="absolute bottom-0 right-0 left-0 h-1"
-        style={{ background: "linear-gradient(90deg, transparent, #E8742A, transparent)" }}
-      />
+      <div style={{ position: "absolute", bottom: 0, right: 0, left: 0, height: 4, background: "linear-gradient(90deg, transparent, #E8742A, transparent)" }} />
     </section>
   );
 }

@@ -30,7 +30,7 @@ export default function ElsharqSection() {
           light
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
           {/* Info - right side (RTL) */}
           <div>
             <div

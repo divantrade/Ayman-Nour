@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#080E1C", borderTop: "3px solid #E8742A" }} className="pt-12 pb-6">
       <div className="container-main">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 mb-10">
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3 no-underline text-white mb-2">

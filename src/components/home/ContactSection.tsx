@@ -16,7 +16,7 @@ export default function ContactSection() {
       <div className="container-main">
         <SectionHeader label="تواصل" title="تواصل معنا" subtitle="للتواصل مع مكتب الدكتور أيمن نور" light />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
           {/* Contact Info */}
           <div className="flex flex-col gap-5">
             {contactItems.map((item) => (

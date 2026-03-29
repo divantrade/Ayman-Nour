@@ -31,9 +31,21 @@ html { scroll-behavior: smooth; }
 
 /* Container utility */
 .container-main {
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+/* Fix RTL overflow */
+body {
+  overflow-x: hidden;
+}
+
+section, footer, nav {
+  overflow-x: clip;
 }
 
 .section { padding: 80px 0; }
