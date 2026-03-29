@@ -1,8 +1,7 @@
 "use client";
 
-import FadeIn from "@/components/ui/FadeIn";
-import SectionHeader from "@/components/ui/SectionHeader";
 import Link from "next/link";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const books = [
   { title: "أوراق من مذكّراتي: شهادة على مصر في نصف قرن", desc: "أحدث كتبه. شهادة حية على أربعة عقود من التاريخ المصري، من اتحاد الطلاب إلى المنفى.", year: "2025", slug: "awraq-min-mudhakkarati" },
@@ -17,7 +16,7 @@ const books = [
 
 export default function BooksSection() {
   return (
-    <section className="py-20 bg-off-white" id="books">
+    <section className="py-20 bg-off-white">
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionHeader
           label="المكتبة"
@@ -25,29 +24,45 @@ export default function BooksSection() {
           subtitle="أحد عشر كتاباً بين الفكر السياسي والتحليل والمذكرات"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {books.map((book, index) => (
-            <FadeIn key={book.slug} delay={index * 0.1}>
-              <Link href={`/books/${book.slug}`} className="group block h-full no-underline">
-                <div className="bg-white rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:border-orange h-full">
-                  {/* Cover */}
-                  <div className="h-[200px] bg-gradient-to-br from-navy to-navy-light flex items-center justify-center relative">
-                    <i className="fas fa-book text-5xl text-[rgba(232,116,42,0.6)]" />
-                    {book.year && (
-                      <span className="absolute top-3 left-3 bg-orange text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
-                        {book.year}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-base font-bold text-navy mb-2 leading-relaxed group-hover:text-orange transition-colors">
-                      {book.title}
-                    </h3>
-                    <p className="text-[13px] text-text-secondary leading-[1.7]">{book.desc}</p>
-                  </div>
+        <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}>
+          {books.map((book) => (
+            <Link key={book.slug} href={`/books/${book.slug}`} className="no-underline group">
+              <div
+                className="bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5"
+                style={{
+                  boxShadow: "var(--shadow-sm)",
+                  border: "1px solid #E2E4E8",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-lg)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#E8742A";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-sm)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#E2E4E8";
+                }}
+              >
+                <div
+                  className="h-[200px] flex items-center justify-center relative"
+                  style={{ background: "linear-gradient(135deg, #0F1E3D, #1A2D54)" }}
+                >
+                  <i className="fas fa-book text-5xl" style={{ color: "rgba(232,116,42,0.6)" }} />
+                  {book.year && (
+                    <span className="absolute top-3 left-3 bg-orange text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
+                      {book.year}
+                    </span>
+                  )}
                 </div>
-              </Link>
-            </FadeIn>
+                <div className="p-5">
+                  <h3 className="text-base font-bold mb-2 leading-relaxed" style={{ color: "#0F1E3D" }}>
+                    {book.title}
+                  </h3>
+                  <p className="text-[13px] leading-[1.7]" style={{ color: "#4A4F5C" }}>
+                    {book.desc}
+                  </p>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

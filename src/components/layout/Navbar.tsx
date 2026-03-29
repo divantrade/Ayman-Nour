@@ -11,43 +11,41 @@ const navLinks = [
   { href: "/media/elsharq", label: "الشرق" },
   { href: "/articles", label: "المقالات" },
   { href: "/political", label: "النضال السياسي" },
-  { href: "/gallery", label: "معرض الصور" },
 ];
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 100);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileOpen(false);
-  }, [pathname]);
+  useEffect(() => setMobileOpen(false), [pathname]);
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
+  const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <>
       <nav
-        className={`fixed top-0 right-0 left-0 z-[1000] transition-all duration-300 border-b-2 border-orange ${
-          isScrolled
-            ? "bg-navy/[0.98] shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-            : "bg-navy/95"
-        }`}
-        style={{ backdropFilter: "blur(20px)" }}
+        className="fixed top-0 right-0 left-0 z-[1000] transition-all duration-300"
+        style={{
+          background: scrolled ? "rgba(15, 30, 61, 0.98)" : "rgba(15, 30, 61, 0.95)",
+          backdropFilter: "blur(20px)",
+          borderBottom: "2px solid #E8742A",
+          boxShadow: scrolled ? "var(--shadow-lg)" : "none",
+        }}
       >
         <div className="max-w-[1200px] mx-auto flex items-center justify-between px-6 h-[70px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 no-underline text-white">
-            <div className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center font-black text-lg text-white">
+            <div
+              className="w-[42px] h-[42px] rounded-full flex items-center justify-center text-white font-black text-lg"
+              style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
+            >
               ن
             </div>
             <div className="text-lg font-bold">
@@ -56,16 +54,16 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-1 list-none">
+          <ul className="hidden lg:flex gap-1 list-none items-center">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 no-underline ${
-                    isActive(link.href)
-                      ? "text-white bg-[rgba(232,116,42,0.15)]"
-                      : "text-white/80 hover:text-white hover:bg-[rgba(232,116,42,0.15)]"
-                  }`}
+                  className="relative no-underline transition-all duration-300 text-sm font-medium px-4 py-2 rounded-lg"
+                  style={{
+                    color: isActive(link.href) ? "#fff" : "rgba(255,255,255,0.8)",
+                    background: isActive(link.href) ? "rgba(232, 116, 42, 0.15)" : "transparent",
+                  }}
                 >
                   {link.label}
                   {isActive(link.href) && (
@@ -77,7 +75,8 @@ export default function Navbar() {
             <li>
               <Link
                 href="/contact"
-                className="mr-2 px-5 py-2 bg-gradient-to-br from-orange to-orange-dark text-white rounded-full text-sm font-semibold no-underline transition-all hover:-translate-y-0.5"
+                className="no-underline text-white text-sm font-semibold px-5 py-2 rounded-full mr-2"
+                style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
               >
                 تواصل معنا
               </Link>
@@ -86,45 +85,51 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden bg-transparent border-none text-white text-2xl cursor-pointer"
-            aria-label="القائمة"
           >
-            <i className={`fas ${isMobileOpen ? "fa-times" : "fa-bars"}`} />
+            <i className={`fas ${mobileOpen ? "fa-times" : "fa-bars"}`} />
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 bg-navy border-t-2 border-orange ${
-            isMobileOpen ? "max-h-[500px] shadow-[0_8px_32px_rgba(0,0,0,0.12)]" : "max-h-0"
-          }`}
-        >
-          <div className="px-6 py-5 flex flex-col gap-1">
+        {mobileOpen && (
+          <ul
+            className="lg:hidden flex flex-col list-none px-5 py-5 gap-1"
+            style={{
+              background: "#0F1E3D",
+              borderTop: "2px solid #E8742A",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`block py-3 px-4 rounded-lg text-base font-medium no-underline transition-all ${
-                  isActive(link.href)
-                    ? "text-white bg-[rgba(232,116,42,0.15)]"
-                    : "text-white/80 hover:text-white hover:bg-[rgba(232,116,42,0.15)]"
-                }`}
-              >
-                {link.label}
-              </Link>
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block py-3 px-4 rounded-lg no-underline text-base font-medium"
+                  style={{
+                    color: isActive(link.href) ? "#fff" : "rgba(255,255,255,0.8)",
+                    background: isActive(link.href) ? "rgba(232, 116, 42, 0.15)" : "transparent",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
-            <Link
-              href="/contact"
-              className="mt-3 text-center px-5 py-3 bg-gradient-to-br from-orange to-orange-dark text-white rounded-full font-semibold no-underline"
-            >
-              تواصل معنا
-            </Link>
-          </div>
-        </div>
+            <li>
+              <Link
+                href="/contact"
+                className="block text-center text-white font-semibold py-3 rounded-full no-underline mt-3"
+                style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
+              >
+                تواصل معنا
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
 
-      {/* Spacer */}
+      {/* Spacer for fixed navbar */}
       <div className="h-[70px]" />
     </>
   );

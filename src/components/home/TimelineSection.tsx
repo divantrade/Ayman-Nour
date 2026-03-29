@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-const timelineItems = [
+const items = [
   { year: "1980", title: "بداية النشاط السياسي", desc: "انتُخب رئيساً لاتحاد طلاب المدارس الثانوية في مصر وعمره 16 عاماً فقط" },
   { year: "1985", title: "التخرج والصحافة", desc: "تخرّج من كلية الحقوق بجامعة المنصورة وبدأ العمل الصحفي في جريدة الوفد" },
   { year: "1995", title: "أصغر نائب في البرلمان", desc: "انتُخب عضواً في مجلس الشعب عن دائرة باب الشعرية وكان أصغر النواب سناً (31 عاماً)" },
@@ -17,8 +17,17 @@ const timelineItems = [
 ];
 
 export default function TimelineSection() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-20 bg-gray-100" id="timeline">
+    <section className="py-20" style={{ background: "#F0F1F3" }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <SectionHeader
           label="المسيرة السياسية"
@@ -26,52 +35,22 @@ export default function TimelineSection() {
           subtitle="من اتحاد طلاب الثانوية إلى قيادة المعارضة المصرية في المنفى"
         />
 
-        <div className="relative py-5">
-          {/* Central line */}
-          <div className="timeline-line" />
-
-          <div className="space-y-10">
-            {timelineItems.map((item, index) => {
-              const isOdd = index % 2 !== 0;
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className={`relative flex items-start ${
-                    isOdd ? "md:flex-row-reverse" : "md:flex-row"
-                  } flex-row`}
+        <div className="timeline">
+          {items.map((item, i) => (
+            <div key={i} className="timeline-item fade-in">
+              <div className="timeline-content">
+                <span
+                  className="inline-block text-white px-3.5 py-1 rounded-full text-[13px] font-bold mb-2.5"
+                  style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
                 >
-                  {/* Content Card */}
-                  <div
-                    className={`w-full md:w-[45%] ${
-                      isOdd ? "md:mr-auto" : "md:ml-auto"
-                    } mr-10 md:mr-0`}
-                  >
-                    <div
-                      className={`bg-white rounded-xl p-6 shadow-[0_4px_16px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] ${
-                        isOdd
-                          ? "border-r-4 md:border-r-0 md:border-l-4 border-r-orange md:border-l-orange"
-                          : "border-r-4 border-r-orange"
-                      }`}
-                    >
-                      <span className="inline-block bg-gradient-to-br from-orange to-orange-dark text-white px-3.5 py-1 rounded-full text-[13px] font-bold mb-2.5">
-                        {item.year}
-                      </span>
-                      <h3 className="text-lg font-bold text-navy mb-2">{item.title}</h3>
-                      <p className="text-sm text-text-secondary leading-[1.8]">{item.desc}</p>
-                    </div>
-                  </div>
-
-                  {/* Dot */}
-                  <div className="absolute right-[11px] md:right-1/2 md:translate-x-1/2 top-6 w-5 h-5 bg-orange border-4 border-off-white rounded-full z-[2]" />
-                </motion.div>
-              );
-            })}
-          </div>
+                  {item.year}
+                </span>
+                <h3 className="text-lg font-bold mb-2" style={{ color: "#0F1E3D" }}>{item.title}</h3>
+                <p className="text-sm leading-[1.8]" style={{ color: "#4A4F5C" }}>{item.desc}</p>
+              </div>
+              <div className="timeline-dot" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

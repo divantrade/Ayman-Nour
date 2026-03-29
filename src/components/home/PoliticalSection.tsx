@@ -1,34 +1,13 @@
 "use client";
 
-import FadeIn from "@/components/ui/FadeIn";
-import SectionHeader from "@/components/ui/SectionHeader";
 import Link from "next/link";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const cards = [
-  {
-    href: "/political/ghad",
-    icon: "fa-sun",
-    title: "حزب غد الثورة",
-    description: "حزب ليبرالي معارض أسسه أيمن نور. يطرح رؤية إصلاحية شاملة تقوم على الديمقراطية والليبرالية وحقوق الإنسان. امتداد لحزب الغد الذي تأسس عام 2004.",
-  },
-  {
-    href: "/political/ena",
-    icon: "fa-handshake",
-    title: "اتحاد القوى الوطنية المصرية",
-    description: 'تأسس في 2021 ليمثل المعارضة المصرية. أطلق "وثيقة العشرين" التي تتضمن تجريم الانقلابات وإطلاق سراح المعتقلين وإصلاح النظام الاقتصادي.',
-  },
-  {
-    href: "/political/adafp",
-    icon: "fa-globe-africa",
-    title: "التحالف الديمقراطي الأفريقي",
-    description: "شارك في تأسيسه في فبراير 2026 بالدار البيضاء. يهدف لتوحيد الأحزاب الليبرالية والديمقراطية في أفريقيا وتعزيز قيم الحرية والتعددية.",
-  },
-  {
-    href: "/political/ena",
-    icon: "fa-scroll",
-    title: "وثيقة العشرين",
-    description: "برنامج عمل شامل للمرحلة القادمة يتضمن: تجريم الانقلابات، إصلاح اقتصادي، عدالة اجتماعية، إطلاق سجناء الرأي، وتجريم العنف والإرهاب.",
-  },
+  { icon: "fa-sun", title: "حزب غد الثورة", desc: "حزب ليبرالي معارض أسسه أيمن نور. يطرح رؤية إصلاحية شاملة تقوم على الديمقراطية والليبرالية وحقوق الإنسان. امتداد لحزب الغد الذي تأسس عام 2004.", href: "/political/ghad" },
+  { icon: "fa-handshake", title: "اتحاد القوى الوطنية المصرية", desc: 'تأسس في 2021 ليمثل المعارضة المصرية. أطلق "وثيقة العشرين" التي تتضمن تجريم الانقلابات وإطلاق سراح المعتقلين وإصلاح النظام الاقتصادي.', href: "/political/ena" },
+  { icon: "fa-globe-africa", title: "التحالف الديمقراطي الأفريقي", desc: "شارك في تأسيسه في فبراير 2026 بالدار البيضاء. يهدف لتوحيد الأحزاب الليبرالية والديمقراطية في أفريقيا وتعزيز قيم الحرية والتعددية.", href: "/political/adafp" },
+  { icon: "fa-scroll", title: "وثيقة العشرين", desc: "برنامج عمل شامل للمرحلة القادمة يتضمن: تجريم الانقلابات، إصلاح اقتصادي، عدالة اجتماعية، إطلاق سجناء الرأي، وتجريم العنف والإرهاب.", href: "/political/ena" },
 ];
 
 export default function PoliticalSection() {
@@ -42,22 +21,35 @@ export default function PoliticalSection() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {cards.map((card, index) => (
-            <FadeIn key={card.title} delay={index * 0.1}>
-              <Link href={card.href} className="no-underline block h-full">
-                <div className="bg-white rounded-xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 transition-all duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:border-orange h-full group">
-                  <div className="w-[52px] h-[52px] rounded-[14px] bg-[rgba(232,116,42,0.15)] flex items-center justify-center text-[22px] text-orange mb-4">
-                    <i className={`fas ${card.icon}`} />
-                  </div>
-                  <h3 className="text-lg font-bold text-navy mb-2.5 group-hover:text-orange transition-colors">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-text-secondary leading-[1.8]">
-                    {card.description}
-                  </p>
+          {cards.map((c) => (
+            <Link key={c.title} href={c.href} className="no-underline group">
+              <div
+                className="bg-white rounded-xl p-8 transition-all duration-300 hover:border-orange"
+                style={{
+                  boxShadow: "var(--shadow-sm)",
+                  border: "1px solid #E2E4E8",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-lg)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#E8742A";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-sm)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#E2E4E8";
+                }}
+              >
+                <div
+                  className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center text-[22px] text-orange mb-4"
+                  style={{ background: "rgba(232, 116, 42, 0.15)" }}
+                >
+                  <i className={`fas ${c.icon}`} />
                 </div>
-              </Link>
-            </FadeIn>
+                <h3 className="text-lg font-bold mb-2.5 group-hover:text-orange transition-colors" style={{ color: "#0F1E3D" }}>
+                  {c.title}
+                </h3>
+                <p className="text-sm leading-[1.8]" style={{ color: "#4A4F5C" }}>{c.desc}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

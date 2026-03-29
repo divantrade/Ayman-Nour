@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import FadeIn from "@/components/ui/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const programs = [
@@ -15,9 +14,10 @@ const programs = [
 
 export default function ElsharqSection() {
   return (
-    <section className="py-20 relative overflow-hidden" style={{
-      background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)"
-    }}>
+    <section
+      className="py-20 relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #0F1E3D 0%, #0A1628 100%)" }}
+    >
       <div className="absolute inset-0" style={{
         background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"
       }} />
@@ -31,42 +31,68 @@ export default function ElsharqSection() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <FadeIn direction="right">
-            <div className="inline-flex items-center gap-2 bg-[rgba(232,116,42,0.15)] border border-[rgba(232,116,42,0.3)] px-3.5 py-1.5 rounded-full text-orange-light text-[13px] mb-5">
+          {/* Info - right side (RTL) */}
+          <div>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13px] mb-5"
+              style={{
+                background: "rgba(232,116,42,0.15)",
+                border: "1px solid rgba(232,116,42,0.3)",
+                color: "#F09048",
+              }}
+            >
               <i className="fas fa-satellite-dish" /> بث مباشر على نايلسات
             </div>
             <h3 className="text-[28px] text-white font-bold mb-4">
               تلفزيون <span className="text-orange">الشرق</span>
             </h3>
-            <p className="text-white/70 text-[15px] leading-[1.9] mb-6">
+            <p className="text-[15px] leading-[1.9] mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
               قناة فضائية مصرية معارضة انطلقت في 25 أبريل 2014. انتقلت ملكيتها إلى الدكتور أيمن نور في أغسطس 2015. تبث من إسطنبول وتقدم تغطية شاملة للأوضاع المصرية والعربية.
             </p>
             <Link
               href="/media/elsharq"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline bg-gradient-to-br from-orange to-orange-dark text-white shadow-[0_4px_20px_rgba(232,116,42,0.4)] hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px] no-underline text-white transition-all hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg, #E8742A, #D05E18)",
+                boxShadow: "0 4px 20px rgba(232,116,42,0.4)",
+              }}
             >
               <i className="fas fa-play" /> شاهد البث المباشر
             </Link>
-          </FadeIn>
+          </div>
 
-          <FadeIn direction="left" delay={0.2}>
-            <div className="flex flex-col gap-3">
-              {programs.map((program) => (
+          {/* Programs - left side (RTL) */}
+          <div className="flex flex-col gap-3">
+            {programs.map((p) => (
+              <div
+                key={p.name}
+                className="flex items-center gap-3.5 px-[18px] py-3.5 rounded-lg transition-all duration-300 cursor-pointer"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "rgba(232,116,42,0.1)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(232,116,42,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
+                }}
+              >
                 <div
-                  key={program.name}
-                  className="flex items-center gap-3.5 bg-white/5 border border-white/[0.08] px-[18px] py-3.5 rounded-lg transition-all hover:bg-[rgba(232,116,42,0.1)] hover:border-[rgba(232,116,42,0.3)]"
+                  className="w-10 h-10 rounded-[10px] flex items-center justify-center text-white text-base flex-shrink-0"
+                  style={{ background: "linear-gradient(135deg, #E8742A, #D05E18)" }}
                 >
-                  <div className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-white text-base flex-shrink-0">
-                    <i className={`fas ${program.icon}`} />
-                  </div>
-                  <div>
-                    <div className="text-white text-[15px] font-semibold">{program.name}</div>
-                    <div className="text-white/50 text-[13px]">تقديم: {program.host}</div>
-                  </div>
+                  <i className={`fas ${p.icon}`} />
                 </div>
-              ))}
-            </div>
-          </FadeIn>
+                <div>
+                  <div className="text-white text-[15px] font-semibold">{p.name}</div>
+                  <div className="text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>تقديم: {p.host}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
