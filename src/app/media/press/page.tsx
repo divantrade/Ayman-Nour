@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "في الصحافة",
@@ -20,7 +21,7 @@ export default function PressPage() {
     <>
       <PageHero label="الإعلام" title="في الصحافة" subtitle="أرشيف ما كُتب عن الدكتور أيمن نور في وسائل الإعلام" />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <div className="max-w-4xl mx-auto space-y-5">
             {pressItems.map((item, index) => (
               <FadeIn key={index} delay={index * 0.1}>
@@ -39,7 +40,7 @@ export default function PressPage() {
               </FadeIn>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

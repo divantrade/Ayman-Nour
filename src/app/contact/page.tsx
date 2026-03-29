@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import { useState } from "react";
 import FadeIn from "@/components/ui/FadeIn";
@@ -23,7 +24,7 @@ export default function ContactPage() {
   return (
     <section className="bg-navy text-white min-h-screen">
       <div className="py-20">
-        <div className="container-main">
+        <Container>
           <SectionHeader
             label="تواصل"
             title="تواصل معنا"
@@ -107,7 +108,7 @@ export default function ContactPage() {
               )}
             </FadeIn>
           </div>
-        </div>
+        </Container>
       </div>
     </section>
   );

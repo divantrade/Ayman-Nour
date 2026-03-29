@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+}
+
+@layer utilities {
+  .container-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 @theme inline {
   --color-navy: #0F1E3D;
   --color-navy-light: #1A2D54;
@@ -29,24 +46,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* Container utility */
-.container-main {
-  width: 100%;
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 24px;
-  padding-left: 24px;
-}
-
-/* Fix RTL overflow */
-body {
-  overflow-x: hidden;
-}
-
-section, footer, nav {
-  overflow-x: clip;
-}
+/* Layout sections */
 
 .section { padding: 80px 0; }
 .section-dark { background: #0F1E3D; color: white; }

@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -49,7 +50,7 @@ export default function GalleryPage() {
       <PageHero label="معرض الصور" title="لحظات من المسيرة" subtitle="لحظات من مسيرة نضال وعطاء امتدت لأكثر من أربعين عاماً" />
 
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           {/* Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((cat) => (
@@ -95,7 +96,7 @@ export default function GalleryPage() {
           <FadeIn>
             <p className="text-center text-text-secondary text-sm mt-12">سيتم إضافة المزيد من الصور قريباً</p>
           </FadeIn>
-        </div>
+        </Container>
       </section>
 
       {/* Lightbox */}

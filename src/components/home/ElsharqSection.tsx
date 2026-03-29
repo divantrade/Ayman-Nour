@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -22,7 +23,7 @@ export default function ElsharqSection() {
         background: "radial-gradient(ellipse at center, rgba(232,116,42,0.06) 0%, transparent 70%)"
       }} />
 
-      <div className="container-main relative z-[2]">
+      <Container className="relative" style={{ zIndex: 2 }}>
         <SectionHeader
           label="الإعلام"
           title="قناة الشرق"
@@ -94,7 +95,7 @@ export default function ElsharqSection() {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

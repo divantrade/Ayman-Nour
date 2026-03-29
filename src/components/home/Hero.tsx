@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 export default function Hero() {
   return (
@@ -14,7 +15,7 @@ export default function Hero() {
       }} />
       <div className="hero-pattern" />
 
-      <div className="container-main relative" style={{ zIndex: 2 }}>
+      <Container className="relative" style={{ zIndex: 2 }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
           {/* Content */}
           <div className="animate-fadeInRight">
@@ -111,7 +112,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
       <div style={{ position: "absolute", bottom: 0, right: 0, left: 0, height: 4, background: "linear-gradient(90deg, transparent, #E8742A, transparent)" }} />
     </section>

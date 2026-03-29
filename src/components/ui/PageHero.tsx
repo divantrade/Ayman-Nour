@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import FadeIn from "./FadeIn";
 
@@ -15,7 +16,7 @@ export default function PageHero({ label, title, subtitle }: PageHeroProps) {
         background: "radial-gradient(ellipse at 20% 80%, rgba(232,116,42,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,116,42,0.05) 0%, transparent 50%)"
       }} />
       <div className="hero-pattern" />
-      <div className="container-main relative z-10 text-center">
+      <Container className="relative" style={{ zIndex: 10, textAlign: "center" }}>
         <FadeIn>
           {label && (
             <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[2px] mb-3 text-orange-light">
@@ -31,7 +32,7 @@ export default function PageHero({ label, title, subtitle }: PageHeroProps) {
             <p className="text-lg text-white/60 max-w-[600px] mx-auto">{subtitle}</p>
           )}
         </FadeIn>
-      </div>
+      </Container>
       <div className="absolute bottom-0 right-0 left-0 h-1 bg-gradient-to-l from-transparent via-orange to-transparent" />
     </section>
   );

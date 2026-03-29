@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import BookCard from "@/components/books/BookCard";
 import { books } from "@/data/books";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "الكتب والمؤلفات",
@@ -17,13 +18,13 @@ export default function BooksPage() {
         subtitle="أحد عشر كتاباً بين الفكر السياسي والتحليل والمذكرات"
       />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {books.map((book, index) => (
               <BookCard key={book.slug} book={book} index={index} />
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

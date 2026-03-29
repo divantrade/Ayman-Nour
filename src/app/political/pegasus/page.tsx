@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "قضية بيغاسوس وبريداتور",
@@ -21,7 +22,7 @@ export default function PegasusPage() {
           <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-red-500 blur-3xl" />
           <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-red-500 blur-3xl" />
         </div>
-        <div className="container-main relative z-10">
+        <Container className="relative" style={{ zIndex: 10 }}>
           <FadeIn>
             <div className="flex items-center gap-3 mb-4">
               <i className="fas fa-shield-halved text-red-400 text-3xl" />
@@ -31,12 +32,12 @@ export default function PegasusPage() {
             <div className="w-20 h-1 bg-red-500 rounded-full mb-4" />
             <p className="text-lg text-white/60 max-w-2xl">أول حالة موثقة عالمياً لاستخدام برنامجي تجسس حكوميين على هاتف شخصية معارضة واحدة</p>
           </FadeIn>
-        </div>
+        </Container>
       </section>
 
       {/* Content */}
       <section className="bg-[#161B22] text-white py-20">
-        <div className="container-main">
+        <Container>
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="rounded-[20px] p-8 md:p-12 mb-12 border border-[rgba(232,80,80,0.2)]" style={{ background: "linear-gradient(135deg, #1a0a0a, #2d1515)" }}>
@@ -108,7 +109,7 @@ export default function PegasusPage() {
               </div>
             </FadeIn>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

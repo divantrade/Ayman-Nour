@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "التحالف الديمقراطي الأفريقي",
@@ -12,7 +13,7 @@ export default function ADAFPPage() {
     <>
       <PageHero label="التحالفات" title="التحالف الديمقراطي الأفريقي" subtitle="رؤية لدعم الديمقراطية والليبرالية في القارة الأفريقية" />
       <section className="py-20 bg-white">
-        <div className="container-main">
+        <Container>
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
@@ -50,7 +51,7 @@ export default function ADAFPPage() {
               </div>
             </FadeIn>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

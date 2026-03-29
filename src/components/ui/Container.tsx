@@ -1,13 +1,30 @@
 "use client";
 
-interface ContainerProps {
+import React from "react";
+
+export default function Container({
+  children,
+  className = "",
+  style = {},
+}: {
   children: React.ReactNode;
   className?: string;
-}
-
-export default function Container({ children, className = "" }: ContainerProps) {
+  style?: React.CSSProperties;
+}) {
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+    <div
+      style={{
+        maxWidth: 1200,
+        marginRight: "auto",
+        marginLeft: "auto",
+        paddingRight: 24,
+        paddingLeft: 24,
+        width: "100%",
+        boxSizing: "border-box",
+        ...style,
+      }}
+      className={className}
+    >
       {children}
     </div>
   );

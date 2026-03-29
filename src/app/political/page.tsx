@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "النضال السياسي",
@@ -20,7 +21,7 @@ export default function PoliticalPage() {
     <>
       <PageHero label="النضال السياسي" title="المشروع الوطني" subtitle="أحزاب وتحالفات ومبادرات من أجل مصر حرة ديمقراطية" />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {sections.map((section, index) => (
               <FadeIn key={section.href} delay={index * 0.1}>
@@ -36,7 +37,7 @@ export default function PoliticalPage() {
               </FadeIn>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

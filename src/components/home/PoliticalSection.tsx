@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -13,7 +14,7 @@ const cards = [
 export default function PoliticalSection() {
   return (
     <section style={{ padding: "80px 0", background: "#F7F8FA" }}>
-      <div className="container-main">
+      <Container>
         <SectionHeader
           label="النضال السياسي"
           title="المشروع الوطني"
@@ -52,7 +53,7 @@ export default function PoliticalSection() {
             </Link>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

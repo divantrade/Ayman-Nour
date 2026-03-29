@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -41,8 +42,7 @@ export default function Navbar() {
         }}
       >
         <div
-          className="container-main"
-          style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 70 }}
+          style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", width: "100%", boxSizing: "border-box" as const, display: "flex", alignItems: "center", justifyContent: "space-between", height: 70 }}
         >
           {/* Logo */}
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff" }}>

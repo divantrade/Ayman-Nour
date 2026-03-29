@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -10,7 +11,7 @@ export default function LatestArticles() {
 
   return (
     <section style={{ padding: "80px 0", background: "#F0F1F3" }}>
-      <div className="container-main">
+      <Container>
         <SectionHeader
           label="المقالات"
           title="أحدث الكتابات"
@@ -45,7 +46,7 @@ export default function LatestArticles() {
             </Link>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

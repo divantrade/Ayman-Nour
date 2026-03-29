@@ -1,9 +1,10 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 export default function PegasusSection() {
   return (
     <section style={{ padding: "80px 0", background: "#0F1E3D" }}>
-      <div className="container-main">
+      <Container>
         <div
           className="rounded-[20px] p-12 relative overflow-hidden max-md:p-8"
           style={{
@@ -56,7 +57,7 @@ export default function PegasusSection() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

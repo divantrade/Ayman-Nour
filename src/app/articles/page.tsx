@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import { useState, useMemo } from "react";
 import PageHero from "@/components/ui/PageHero";
@@ -31,7 +32,7 @@ export default function ArticlesPage() {
       />
 
       <section className="py-20 bg-gray-100">
-        <div className="container-main">
+        <Container>
           {/* Filters */}
           <div className="bg-white rounded-xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200 mb-8">
             <div className="flex flex-col md:flex-row gap-4">
@@ -89,7 +90,7 @@ export default function ArticlesPage() {
               <p className="text-text-secondary text-lg">لا توجد مقالات تطابق معايير البحث</p>
             </div>
           )}
-        </div>
+        </Container>
       </section>
     </>
   );

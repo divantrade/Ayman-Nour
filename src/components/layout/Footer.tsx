@@ -1,11 +1,12 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer style={{ background: "#080E1C", borderTop: "3px solid #E8742A" }} className="pt-12 pb-6">
-      <div className="container-main">
+      <Container>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 40 }}>
           {/* Brand */}
           <div>
@@ -109,7 +110,7 @@ export default function Footer() {
         <div className="pt-5 text-center text-[13px]" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)" }}>
           جميع الحقوق محفوظة &copy; 2026 - الموقع الرسمي للدكتور أيمن عبد العزيز نور
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

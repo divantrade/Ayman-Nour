@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "الإعلام",
@@ -19,7 +20,7 @@ export default function MediaPage() {
     <>
       <PageHero label="الإعلام" title="النشاط الإعلامي" subtitle="قناة الشرق الفضائية والمقابلات والتغطية الإعلامية" />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {mediaSections.map((section, index) => (
               <FadeIn key={section.href} delay={index * 0.1}>
@@ -36,7 +37,7 @@ export default function MediaPage() {
               </FadeIn>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

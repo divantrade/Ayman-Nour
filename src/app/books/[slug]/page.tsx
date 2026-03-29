@@ -4,6 +4,7 @@ import Link from "next/link";
 import { books } from "@/data/books";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -27,7 +28,7 @@ export default async function BookPage({ params }: Props) {
     <>
       <PageHero label="المكتبة" title={book.title} />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <FadeIn>
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">
@@ -53,7 +54,7 @@ export default async function BookPage({ params }: Props) {
               </div>
             </div>
           </FadeIn>
-        </div>
+        </Container>
       </section>
     </>
   );

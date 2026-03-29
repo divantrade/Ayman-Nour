@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import { useEffect } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -28,7 +29,7 @@ export default function TimelineSection() {
 
   return (
     <section style={{ padding: "80px 0", background: "#F0F1F3" }}>
-      <div className="container-main">
+      <Container>
         <SectionHeader
           label="المسيرة السياسية"
           title="أكثر من أربعة عقود"
@@ -52,7 +53,7 @@ export default function TimelineSection() {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

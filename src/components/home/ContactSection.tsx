@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import SectionHeader from "@/components/ui/SectionHeader";
 
@@ -13,7 +14,7 @@ const contactItems = [
 export default function ContactSection() {
   return (
     <section style={{ padding: "80px 0", background: "#0F1E3D" }}>
-      <div className="container-main">
+      <Container>
         <SectionHeader label="تواصل" title="تواصل معنا" subtitle="للتواصل مع مكتب الدكتور أيمن نور" light />
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
@@ -86,7 +87,7 @@ export default function ContactSection() {
             </button>
           </form>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

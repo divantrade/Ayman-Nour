@@ -3,6 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Timeline from "@/components/biography/Timeline";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "السيرة الذاتية",
@@ -35,7 +36,7 @@ export default function BiographyPage() {
 
       {/* Personal Info */}
       <section className="py-20 bg-white">
-        <div className="container-main">
+        <Container>
           <SectionHeader label="البيانات" title="المعلومات الأساسية" />
           <FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
@@ -52,12 +53,12 @@ export default function BiographyPage() {
               ))}
             </div>
           </FadeIn>
-        </div>
+        </Container>
       </section>
 
       {/* Family */}
       <section className="py-20 bg-gray-100">
-        <div className="container-main">
+        <Container>
           <SectionHeader label="العائلة" title="الحياة الشخصية" />
           <FadeIn>
             <div className="max-w-3xl mx-auto bg-white rounded-xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">
@@ -70,12 +71,12 @@ export default function BiographyPage() {
               </div>
             </div>
           </FadeIn>
-        </div>
+        </Container>
       </section>
 
       {/* Education */}
       <section className="py-20 bg-white">
-        <div className="container-main">
+        <Container>
           <SectionHeader label="التعليم" title="المؤهلات الأكاديمية" />
           <FadeIn>
             <div className="max-w-3xl mx-auto space-y-4">
@@ -94,19 +95,19 @@ export default function BiographyPage() {
               ))}
             </div>
           </FadeIn>
-        </div>
+        </Container>
       </section>
 
       {/* Timeline */}
       <section className="py-20 bg-gray-100">
-        <div className="container-main">
+        <Container>
           <SectionHeader
             label="المسيرة السياسية"
             title="أكثر من أربعة عقود"
             subtitle="من اتحاد طلاب الثانوية إلى قيادة المعارضة المصرية في المنفى"
           />
           <Timeline />
-        </div>
+        </Container>
       </section>
     </>
   );

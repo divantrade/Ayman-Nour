@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "حزب غد الثورة",
@@ -13,7 +14,7 @@ export default function GhadPage() {
     <>
       <PageHero label="الأحزاب" title="حزب غد الثورة" subtitle="الحزب الليبرالي الإصلاحي — من حزب الغد إلى غد الثورة" />
       <section className="py-20 bg-white">
-        <div className="container-main">
+        <Container>
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="bg-off-white rounded-[20px] p-8 md:p-12 mb-12">
@@ -51,7 +52,7 @@ export default function GhadPage() {
               </div>
             </FadeIn>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

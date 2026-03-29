@@ -5,6 +5,7 @@ import { articles } from "@/data/articles";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
 import { formatDate } from "@/lib/utils";
+import Container from "@/components/ui/Container";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -28,7 +29,7 @@ export default async function ArticlePage({ params }: Props) {
     <>
       <PageHero label="المقالات" title={article.title} />
       <section className="py-20 bg-off-white">
-        <div className="container-main">
+        <Container>
           <FadeIn>
             <div className="max-w-3xl mx-auto">
               <div className="bg-white rounded-[20px] p-8 md:p-12 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-gray-200">
@@ -53,7 +54,7 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             </div>
           </FadeIn>
-        </div>
+        </Container>
       </section>
     </>
   );

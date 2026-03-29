@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "اتحاد القوى الوطنية المصرية",
@@ -22,7 +23,7 @@ export default function ENAPage() {
     <>
       <PageHero label="التحالفات" title="اتحاد القوى الوطنية المصرية" subtitle="أكبر تحالف للمعارضة المصرية — من أجل مصر حرة وديمقراطية" />
       <section className="py-20 bg-white">
-        <div className="container-main">
+        <Container>
           <div className="max-w-4xl mx-auto">
             <FadeIn>
               <div className="bg-off-white rounded-[20px] p-8 md:p-12 mb-12">
@@ -64,7 +65,7 @@ export default function ENAPage() {
               </div>
             </FadeIn>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

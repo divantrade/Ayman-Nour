@@ -1,4 +1,5 @@
 "use client";
+import Container from "@/components/ui/Container";
 
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -17,7 +18,7 @@ const books = [
 export default function BooksSection() {
   return (
     <section style={{ padding: "80px 0", background: "#F7F8FA" }}>
-      <div className="container-main">
+      <Container>
         <SectionHeader
           label="المكتبة"
           title="الكتب والمؤلفات"
@@ -65,7 +66,7 @@ export default function BooksSection() {
             </Link>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
