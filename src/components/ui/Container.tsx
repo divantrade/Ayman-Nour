@@ -21,6 +21,7 @@ export default function Container({
         paddingLeft: 24,
         width: "100%",
         boxSizing: "border-box",
+        overflowX: "hidden",
         ...style,
       }}
       className={className}

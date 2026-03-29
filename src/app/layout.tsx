@@ -72,9 +72,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body style={{ minHeight: "100vh", display: "flex", flexDirection: "column", overflowX: "hidden", maxWidth: "100vw" }}>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main style={{ flex: 1, overflowX: "hidden" }}>{children}</main>
         <Footer />
         <ScrollToTop />
       </body>
