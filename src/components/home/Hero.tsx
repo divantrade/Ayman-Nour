@@ -210,13 +210,16 @@ export default function Hero() {
                 boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
               }}
             >
-              <div style={{ textAlign: "center", color: "rgba(255,255,255,0.4)" }}>
-                <i
-                  className="fas fa-user"
-                  style={{ fontSize: 80, marginBottom: 16, display: "block" }}
-                />
-                <p style={{ fontSize: 14 }}>صورة الدكتور أيمن نور</p>
-              </div>
+              <img
+                src="/ayman-nour.png"
+                alt="د. أيمن نور"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                }}
+              />
             </div>
             <div
               style={{
