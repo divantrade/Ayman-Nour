@@ -3,12 +3,10 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const programs = [
-  { name: "مع معتز", host: "معتز مطر", icon: "fa-microphone" },
-  { name: "الشارع المصري", host: "عماد البحيري وأحمد عطوان", icon: "fa-users" },
+  { name: "الشارع المصري", host: "أحمد عطوان، أحمد سميح، أحمد العربي", icon: "fa-users" },
   { name: "أنا الشعب", host: "دعاء حسن", icon: "fa-bullhorn" },
-  { name: "ابن البلد", host: "هشام عبد الله", icon: "fa-flag" },
+  { name: "إيه الحكاية", host: "دعاء حسن، عماد البحيري", icon: "fa-microphone" },
   { name: "هاي تك", host: "عمر الشال", icon: "fa-laptop" },
-  { name: "بالتأكيد", host: "هشام عبد الحميد", icon: "fa-check-double" },
 ];
 
 export default function ElsharqSection() {
