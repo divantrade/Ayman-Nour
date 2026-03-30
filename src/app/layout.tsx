@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "قناة الشرق",
     "Ayman Nour",
   ],
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "ar_EG",
